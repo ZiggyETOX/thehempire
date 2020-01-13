@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: banner_lg
+label: 'Banner large (3.62:1)'
+effects:
+  d5b04eb3-8e53-4e13-a307-abfa60833556:
+    uuid: d5b04eb3-8e53-4e13-a307-abfa60833556
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1410
+      height: 390

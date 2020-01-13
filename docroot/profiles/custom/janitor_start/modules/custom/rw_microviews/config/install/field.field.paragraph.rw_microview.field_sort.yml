@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sort
+    - paragraphs.paragraphs_type.rw_microview
+  module:
+    - options
+id: paragraph.rw_microview.field_sort
+field_name: field_sort
+entity_type: paragraph
+bundle: rw_microview
+label: 'Sort order'
+description: 'Select the order to display the selected content'
+required: true
+translatable: false
+default_value:
+  -
+    value: recent
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mosaic_display
+    - paragraphs.paragraphs_type.rw_mosaic
+  module:
+    - options
+id: paragraph.rw_mosaic.field_mosaic_display
+field_name: field_mosaic_display
+entity_type: paragraph
+bundle: rw_mosaic
+label: 'Display option'
+description: 'Select the method to display the selected items in this row.'
+required: true
+translatable: false
+default_value:
+  -
+    value: col
+default_value_callback: ''
+settings: {  }
+field_type: list_string

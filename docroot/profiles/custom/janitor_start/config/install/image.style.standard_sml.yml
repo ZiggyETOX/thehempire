@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_sml
+label: 'Standard small (5:4) - Mobile phone (portrait)'
+effects:
+  72114dbb-0b25-425a-8aac-6e9ec5f47474:
+    uuid: 72114dbb-0b25-425a-8aac-6e9ec5f47474
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 320
+      height: 240
+      crop_type: focal_point

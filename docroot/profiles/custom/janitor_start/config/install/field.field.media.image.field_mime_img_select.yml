@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mime_img_select
+    - media.type.image
+  module:
+    - options
+id: media.image.field_mime_img_select
+field_name: field_mime_img_select
+entity_type: media
+bundle: image
+label: 'Image type'
+description: 'Provide the original image MIME type'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,7 @@
+microview:
+  version: 1.x
+  css:
+    layout:
+      css/rw_microviews.module.css: {}
+    theme:
+      css/rw_microviews.theme.css: {}

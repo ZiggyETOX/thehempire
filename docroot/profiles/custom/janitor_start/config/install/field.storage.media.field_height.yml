@@ -1,0 +1,20 @@
+uuid: 07c81396-8f8f-42f1-962f-310d7884f64a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_height
+field_name: field_height
+entity_type: media
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

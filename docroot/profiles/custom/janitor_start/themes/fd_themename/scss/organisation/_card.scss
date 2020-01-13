@@ -1,0 +1,12 @@
+// CARD
+.organisation--view-mode-card { height: 100%; background: $light-gray;
+	.field--name-field-image { height: 0; width: 100%; padding: 50% 0; position: relative; border: 1rem solid $light-gray; background: $white;
+		img { width: 90%; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+	}
+	.content { padding: 0 1rem 1rem 1rem;
+		header {
+			h2 { font-size: 1.25rem; font-weight: 500; }
+		}
+		.field--name-field-url { color: $primary-color; overflow: hidden; text-overflow: ellipsis; }
+	}
+}

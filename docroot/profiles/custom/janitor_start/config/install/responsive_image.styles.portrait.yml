@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.portrait_lg
+  theme:
+    - adminijanitor
+_core:
+  default_config_hash: 8qCqCWcAcJ6xzx_xIqjK7ddsvvO7uYB0Hs8yX_MuJd8
+id: portrait
+label: 'Portrait (4:5)'
+image_style_mappings:
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: portrait_lg
+breakpoint_group: adminijanitor
+fallback_image_style: portrait_lg

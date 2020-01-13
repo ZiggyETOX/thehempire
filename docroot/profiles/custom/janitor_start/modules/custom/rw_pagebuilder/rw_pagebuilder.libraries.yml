@@ -1,0 +1,13 @@
+pagebuilder:
+  version: 1.x
+  css:
+    base:
+      css/rw_pagebuilder.module.css: {}
+    theme:
+      css/rw_pagebuilder.admin.theme.css: {}
+
+slick:
+  version: 1.x
+  css:
+    base:
+      css/rw_pagebuilder.slick.module.css: {}

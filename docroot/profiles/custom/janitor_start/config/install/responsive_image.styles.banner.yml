@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - adminijanitor
+_core:
+  default_config_hash: QIGUGy9tLtaUDQ6hEQDChdc3fwNv4GaZOSHS3RRbPtw
+id: banner
+label: 'Banner (3.62 x 1)'
+image_style_mappings:
+  -
+    breakpoint_id: bootstrap.screen-lg-min
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: ''
+breakpoint_group: bootstrap
+fallback_image_style: '_original image_'

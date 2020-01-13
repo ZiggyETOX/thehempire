@@ -1,0 +1,10 @@
+.rw-paragraph--microview .node {
+  /*background: rgba(0, 100, 0, 0.5);*/
+  /*border: 1px dotted var(--rw-admin-color, #a9a9a9);*/
+  /*padding: calc(var(--rw-gutter, 24px) / 2);*/
+  box-sizing: border-box;
+}
+
+.rw-paragraph--microview .node .node__title {
+  margin-top: 0;
+}

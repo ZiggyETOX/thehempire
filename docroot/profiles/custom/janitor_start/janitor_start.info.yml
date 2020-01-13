@@ -1,0 +1,87 @@
+name: 'Rogerwilco Janitor'
+type: profile
+description: 'A starting point for any Rogerwilco client site including the Janitor suite of products'
+version: '8.x.x-1.0-alpha'
+core: '8.x'
+project: 'Rogerwilco'
+distribution:
+  name: Janitor
+  langcode: en
+  install:
+    theme: adminijanitor
+
+# Required modules
+# Initial list based on core's standard install, and including some modules we
+# like and install every time.
+dependencies:
+  - node
+  - history
+  - block
+  - breakpoint
+  - ckeditor
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - entity_reference_revisions
+  - help
+  - image
+  - media
+  - menu_ui
+  - options
+  - path
+  - page_cache
+#  - dynamic_page_cache
+  - big_pipe
+  - taxonomy
+  - dblog
+  - responsive_image
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - automated_cron
+# and now some contrib
+  - admin_toolbar
+  - admin_toolbar_tools
+  - adminimal_admin_toolbar
+#  - advagg
+  - captcha
+  - coffee
+  - config_split
+  - devel
+  - entity_browser
+  - entity_browser_entity_form
+  - focal_point
+  - crop
+  - entity_browser
+  - field_group
+  - kint
+  - menu_block
+  - module_filter
+  - paragraphs
+  - pathauto
+  - rabbit_hole
+  - redirect
+  - schema_metatag
+  - search_kint
+  - token
+  - video_embed_media
+  - views_infinite_scroll
+  - webform
+# custom rw code shipped with janitor_start
+  - rw_pagebuilder
+
+# Enabled themes list
+themes:
+  - bartik
+  - adminimal_theme
+  - adminijanitor
+#  - bootstrap

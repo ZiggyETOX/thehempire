@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: portrait_sml
+label: 'Portrait small (5:4) - Small devices, smart phones'
+effects:
+  a226fa67-7693-4068-9b1e-adc49cd25f88:
+    uuid: a226fa67-7693-4068-9b1e-adc49cd25f88
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 240
+      height: 320
+      crop_type: focal_point

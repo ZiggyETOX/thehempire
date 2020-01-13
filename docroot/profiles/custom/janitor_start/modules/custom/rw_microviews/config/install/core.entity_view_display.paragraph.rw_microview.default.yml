@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rw_microview.field_horizontal
+    - field.field.paragraph.rw_microview.field_microview_content_types
+    - field.field.paragraph.rw_microview.field_microview_number
+    - field.field.paragraph.rw_microview.field_microview_display
+    - field.field.paragraph.rw_microview.field_sort
+    - field.field.paragraph.rw_microview.field_title
+    - field.field.paragraph.rw_microview.field_view_mode
+    - paragraphs.paragraphs_type.rw_microview
+id: paragraph.rw_microview.default
+targetEntityType: paragraph
+bundle: rw_microview
+mode: default
+content:
+  field_title:
+    weight: 0
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_horizontal: true
+  field_microview_content_types: true
+  field_microview_number: true
+  field_microview_display: true
+  field_sort: true
+  field_view_mode: true

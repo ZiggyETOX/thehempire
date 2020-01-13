@@ -1,0 +1,14 @@
+additional-styling:
+  css:
+    base:
+      css/adminijanitor.css: {}
+
+admin.dashboard:
+  css:
+    theme:
+      css/adminijanitor.dashboard.css: {}
+
+media-browser:
+  css:
+    theme:
+      css/adminijanitor.mediabrowser.theme.css: {}

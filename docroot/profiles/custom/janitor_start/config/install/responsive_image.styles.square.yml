@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.square_med
+    - image.style.square_nano
+    - image.style.square_sml
+  theme:
+    - adminijanitor
+id: square
+label: 'Square (1:1)'
+image_style_mappings:
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_med
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_med
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_med
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_med
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_sml
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_sml
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_sml
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_sml
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_nano
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_nano
+breakpoint_group: adminijanitor
+fallback_image_style: square_nano

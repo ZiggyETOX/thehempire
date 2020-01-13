@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_horizontal
+    - paragraphs.paragraphs_type.rw_microview
+  module:
+    - options
+id: paragraph.rw_microview.field_horizontal
+field_name: field_horizontal
+entity_type: paragraph
+bundle: rw_microview
+label: 'Horizontal option'
+description: 'Select the way the image will behave on the left and right; Select Wide to break out of the content width margins, select Full to occupy the entire screen width. Leave this field blank for default behaviour. '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

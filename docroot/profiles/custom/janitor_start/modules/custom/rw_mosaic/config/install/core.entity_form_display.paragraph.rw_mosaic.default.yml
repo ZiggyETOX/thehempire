@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rw_mosaic.field_items
+    - field.field.paragraph.rw_mosaic.field_mosaic_display
+    - field.field.paragraph.rw_mosaic.field_title
+    - paragraphs.paragraphs_type.rw_mosaic
+id: paragraph.rw_mosaic.default
+targetEntityType: paragraph
+bundle: rw_mosaic
+mode: default
+content:
+  field_items:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mosaic_display:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: 'E.g. "Related content"'
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

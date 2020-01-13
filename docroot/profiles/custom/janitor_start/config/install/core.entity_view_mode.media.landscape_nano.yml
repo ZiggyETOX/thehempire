@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.landscape_nano
+label: 'Standard nano (Landscape 5:4)'
+targetEntityType: media
+cache: true

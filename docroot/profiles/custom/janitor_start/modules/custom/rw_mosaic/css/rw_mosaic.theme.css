@@ -1,0 +1,9 @@
+.rw-paragraph--mosaic .node {
+  /*background: rgba(0, 100, 0, 0.5);*/
+  /*border: 1px dotted var(--rw-admin-color, #a9a9a9);*/
+  /*padding: calc(var(--rw-gutter, 24px) / 2);*/
+}
+
+.rw-paragraph--mosaic .node .node__title {
+  margin-top: 0;
+}

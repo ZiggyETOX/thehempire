@@ -1,0 +1,100 @@
+/**
+ * @file
+ * Default styles for the media browser interfaces used on AdminiJanitor
+ */
+
+/* --== Media browser view display ==-- */
+.rw-media-browser--wrapper .views-infinite-scroll-content-wrapper {
+  display: inline-block;
+  column-count: 12;
+  column-gap: 12px;
+  display: grid;
+  grid-gap: 12px;
+  grid-gap: calc(var(--rw-gutter, 24px) / 2);
+  grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+}
+.media-browser--browser-row {
+  box-sizing: border-box;
+  margin: 0 0 12px 0;
+  padding: 2px;
+  border: 1px solid var(--rw-color-secondary, #efefef);
+  position: relative;
+  text-align: center;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@supports (display: grid) {
+  .media-browser--browser-row {
+    margin-bottom: 0;
+  }
+}
+.media-browser--browser-row .media-browser--title {
+  margin: 2px 0 0 0;
+  padding: 2px;
+  font-size: 0.8em;
+}
+.media-browser--browser-row input[type='checkbox'] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100% !important; /* adminimal important override */
+  height: 100% !important; /* adminimal important override */
+  opacity: 0;
+  cursor: pointer;
+}
+.media-browser--browser-row input[type='checkbox']:checked {
+  box-sizing: border-box;
+  opacity: 1;
+  border: 2px solid var(--rw-color-primary, #333333);
+  padding: 2px;
+  background: transparent;
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.media-browser--browser-row input[type='checkbox']:checked::after {
+  content: '✓';
+  text-align: center;
+  line-height: 24px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-12px) translateX(12px);
+  border-radius: 12px;
+  background: var(--rw-color-primary, #333333);
+  color: #fff;
+  z-index: 100;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/* File browser */
+.media-browser--file-item {
+  background-color: #979797;
+}
+.media-browser--browser-row:hover .media-browser--file-item {
+  background-color: #696969;
+}
+.media-browser--file-item .file {
+  padding: 48px 0px 12px 0px;
+  margin: 0;
+  background-size: 32px 32px;
+  background-position: center 12px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+.media-browser--file-item .file a {
+  color: #fff;
+  font-size: 0.6rem;
+  text-align: center;
+}

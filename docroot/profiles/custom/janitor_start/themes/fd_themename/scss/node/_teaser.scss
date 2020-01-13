@@ -1,0 +1,73 @@
+// TEASER
+.node--view-mode-teaser { background: $light-gray; margin-bottom: 0.5rem;
+	a { color: $black; }
+	.teaser-image { @include xy-cell(12, false, 0, margin, none, small, false);
+		img { width: 100%; max-width: none; }
+	}
+	.teaser-content { padding: 1rem; @include xy-cell(12, false, 0, margin, none, small, false);
+		footer { font-size: 0.875rem; font-weight: 300; }
+		h3 { font-size: 1.25rem; font-weight: 500;
+			&:after { content: ''; width: 60px; height: 2px; display: block; background: $primary-color; margin-top: 0.5rem; margin-bottom: 0.5rem; transition: width 0.2s ease-in-out; }
+		}
+		.field--name-body {
+			p { margin-bottom: 0; }
+		}
+	}
+	@include breakpoint(medium) { margin-bottom: 1rem; }
+	@include breakpoint(large) {
+		.teaser-image { @include xy-cell(4, false, 0, margin, none, small, false); }
+		.teaser-content { padding: 2rem; @include xy-cell(8, false, 0, margin, none, medium, false); }
+	}
+	@include breakpoint(xlarge) { margin-bottom: 2rem;
+		.teaser-image { @include xy-cell(3, false, 0, margin, none, small, false); }
+		.teaser-content { @include xy-cell(9, false, 0, margin, none, medium, false); }
+	}
+
+	&:hover {
+		.teaser-content {
+			h3 {
+				&:after { width: 200px; }
+			}
+		}
+	}
+
+	// event
+	&.node--type-event {
+		.teaser-content {
+			footer {
+				.event-location {
+					& > div { display: inline; }
+				}
+			}
+		}
+	}
+}
+
+// display within sidebar
+.has-one-sidebar {
+	.region-sidebar-first,
+	.region-sidebar-second {
+		@include breakpoint(large) {
+			.teaser-image { @include xy-cell(12, false, 0, margin, none, small, false); }
+			.teaser-content { padding: 1rem; @include xy-cell(12, false, 0, margin, none, medium, false); }
+		}
+		@include breakpoint(xlarge) {
+			.teaser-image { @include xy-cell(12, false, 0, margin, none, small, false); }
+			.teaser-content { @include xy-cell(12, false, 0, margin, none, medium, false); }
+		}
+	}
+}
+
+// display within content with sidebar
+.has-one-sidebar {
+	.region-content {
+		@include breakpoint(large) {
+			.teaser-image { @include xy-cell(6, false, 0, margin, none, small, false); }
+			.teaser-content { padding: 1rem; @include xy-cell(6, false, 0, margin, none, medium, false); }
+		}
+		@include breakpoint(xlarge) {
+			.teaser-image { @include xy-cell(5, false, 0, margin, none, small, false); }
+			.teaser-content { padding: 2rem; @include xy-cell(7, false, 0, margin, none, medium, false); }
+		}
+	}
+}

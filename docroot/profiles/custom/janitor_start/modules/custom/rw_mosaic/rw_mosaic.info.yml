@@ -1,0 +1,16 @@
+name: 'Page builder: Mosaic'
+description: 'Paragraph type to collect arbitrarily selected content in various display formats'
+type: module
+core: 8.x
+dependencies:
+  - blazy
+  - field
+  - node
+  - options
+  - paragraphs
+  - rw_pagebuilder
+  - slick
+  - user
+  - views
+version: 8.x-1.0
+package: 'Rogerwilco'

@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains rw_pagebuilder.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rw_pagebuilder_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rw_pagebuilder module.
+    case 'help.page.rw_pagebuilder':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Additional options to alter the way (node) pages render, with template suggestions and/or generated libraries to override from the theme') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Add the CSS custom properties base to every page
+ */
+function rw_pagebuilder_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'rw_pagebuilder/pagebuilder';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() (node)
+ *
+ * Add admin-friendly variables for node templates
+ */

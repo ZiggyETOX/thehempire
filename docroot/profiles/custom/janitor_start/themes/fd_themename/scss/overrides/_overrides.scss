@@ -1,0 +1,76 @@
+// OVERRIDES
+
+// global
+* { box-sizing: border-box; }
+
+// button
+.button { text-transform: uppercase; line-height: 14px; }
+
+// form required label
+label.form-required {
+	&:after { content: '\f069'; font-family: 'FontAwesome'; font-size: 0.5rem; position: relative; top: -5px; left: 2px; color: $alert-color; }
+}
+
+// wrapper specific headings
+.sidebar-first,
+.sidebar-second {
+	.block { margin-bottom: rem-calc(16);
+		& > h2 { font-weight: 500; font-size: 1.2rem; text-transform: capitalize; margin-bottom: rem-calc(32); }
+	}
+}
+.view-header {
+	h2 { font-weight: 500; font-size: 1.2rem; text-transform: capitalize; margin-bottom: rem-calc(32); }
+}
+
+// paragraphs
+p.tiny { font-size: 0.8rem; }
+p.extra-tiny { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.2em; }
+
+// articles page form
+.view-articles-page { position: relative;
+	.view-filters { position: absolute; top: -6px; right: 0;
+		form.views-exposed-form {
+			.form-item {
+				label { float: left; line-height: 39px; display: inline-block; margin-right: 10px; }
+				select { width: auto; min-width: 140px; }
+			}
+		}
+	} 
+}
+
+// accordion
+.accordion-title { font-weight: 500;
+	&:before { box-sizing: border-box; content: '\f067'; font-family: 'FontAwesome'; font-size: rem-calc(12); color: $medium-gray; right: auto; left: 0; border: 2px solid $medium-gray; width: 20px; height: 20px; text-align: center; line-height: 18px; margin-top: -10px;
+		@include border-radius(50%);
+	}
+	&:hover,
+	&:focus { color: $black; background: none; }
+}
+.is-active > .accordion-title:before { content: '\f068'; }
+
+// tabs
+nav.tabs { border: none; }
+ul.tabs, ol.tabs { margin-bottom: rem-calc(16);
+	li.is-active { background: $light-gray; }
+}
+
+// pager
+ul.pager, ol.pager { margin: 0; list-style-type: none; }
+
+// contact page
+.custom-cell { margin-bottom: 1rem;
+	@include xy-cell(12, true, $grid-margin-gutters, margin, right left, small, false);
+	@include breakpoint(medium) {
+		margin-bottom: 2rem;
+		@include xy-cell(12, true, $grid-margin-gutters, margin, right left, medium, false);
+	}
+	@include breakpoint(large) {
+		margin-bottom: 3rem;
+		@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+		@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+	}
+	@include breakpoint(xlarge) {
+		@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+		@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+	}
+}

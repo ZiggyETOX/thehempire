@@ -1,0 +1,99 @@
+// BLOCKS
+
+body.path-frontpage {
+
+	// frontpage mission block
+	.region-highlighted {
+		@include xy-grid(horizontal, true);
+		@include xy-gutters($grid-margin-gutters, margin, right left, true);
+
+		.block-mission-block { margin-bottom: 1rem;
+			h2 { font-size: 1.5rem; font-weight: 500; }
+			@include xy-cell(12, true, $grid-margin-gutters, margin, right left, small, false);
+			@include breakpoint(medium) {
+				margin-bottom: 2rem;
+				@include xy-cell(12, true, $grid-margin-gutters, margin, right left, medium, false);
+			}
+			@include breakpoint(large) {
+				@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+				@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+			}
+			@include breakpoint(xlarge) {
+				@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+				@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+			}
+
+			a.mission--readmore-link { @include button(false, $primary-color, transparentize($primary-color, 0.2), $white, solid); }
+		}
+	}
+
+	// partner spotlight
+	#block-gsf-featured-member { margin-top: 1rem; padding-top: 2rem; position: relative;
+		&:before { content: ''; display: block; position: absolute; width: calc(100% - 1rem); height: 2px; top: 0; left: 0.5rem; background: $light-gray; }
+		h2 { font-size: 1.5rem; font-weight: 500; display: inline-block;
+			&.block--title { display: none; }
+		}
+		.partner-logo {
+			.view-display-id-bk_member_logo_latest { margin-bottom: 0.5rem; }
+		}
+		@include breakpoint(medium) {
+			margin-top: 2rem; padding-top: 3rem;
+			&:before { width: calc(100% - 2rem); left: 1rem; }
+		}
+		@include breakpoint(large) {
+			.partner-logo {
+				.view-display-id-bk_member_logo_latest { position: relative; margin: 0 0 2rem calc(2rem - 2px); padding: 0 0 0 2rem; display: inline-block;
+					&:before { content: ''; display: block; position: absolute; left: 0; top: calc(50% - 1rem); width: 2px; height: 2rem; background: $primary-color; }
+				}
+			}
+		}
+	}
+}
+
+// main content block
+#block-fd-gsf2019-content { min-height: 100px;
+	@include breakpoint(medium) { min-height: 280px; }
+}
+
+// twitter feed
+#block-twitterfeed { border: 1px solid $medium-gray; padding: 0; margin-bottom: 0; overflow-x: scroll;
+	@include breakpoint(large) { margin-top: 1rem; padding: 0 rem-calc(10); }
+}
+
+// social list
+#block-gsf-footer-sociallist {
+	ul.social-item-list { margin: 0; list-style-type: none;
+		li { position: relative; display: inline-block; width: 30px; height: 30px; margin-right: 10px;
+			a { text-indent: -9999em; display: block; height: 100%; position: relative; z-index: 1; background: transparent; }
+			&:after { font-family: 'FontAwesome'; font-size: 0.8rem; position: absolute; z-index: 0; display: block; width: 100%; height: 100%; top: 0; left: 0; text-align: center; line-height: 30px; background: $white; border: 1px solid $primary-color; color: $primary-color;
+				@include border-radius(50%);
+			}
+			&.twitter {
+				&:after { content: '\f099'; }
+			}
+			&.facebook {
+				&:after { content: '\f09a'; }
+			}
+			&.linkedin {
+				&:after { content: '\f0e1'; }
+			}
+			&.instagram {
+				&:after { content: '\f16d'; }
+			}
+			&:hover {
+				&:after { background: $primary-color; color: $white; }
+			}
+		}
+	}
+}
+
+// footer message
+.region-footer-message {
+	@include xy-grid(horizontal, true);
+	#block-footermessagelegacy { @include xy-cell(12, true, $grid-margin-gutters, margin, top right bottom left, small, false); text-align: center;
+		p { margin: 0; }
+		@include breakpoint(medium) { text-align: left;
+			@include xy-cell(12, true, $grid-margin-gutters, margin, top right bottom left, medium, false);
+		}
+	}
+}

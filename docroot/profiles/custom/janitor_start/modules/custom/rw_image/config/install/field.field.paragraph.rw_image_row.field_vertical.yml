@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vertical
+    - paragraphs.paragraphs_type.rw_image_row
+  module:
+    - options
+_core:
+  default_config_hash: ywEuGYdL4v831R5n3qnhq8qZsiEk-WhqmypRocSG3r8
+id: paragraph.rw_image_row.field_vertical
+field_name: field_vertical
+entity_type: paragraph
+bundle: rw_image_row
+label: 'Vertical options'
+description: 'Select how the content above and below the image should behave; Select <strong>Pull top</strong> to pull content from the top down into the image, select <strong>Pull bottom</strong> to pull content up from the bottom. Select all the options to apply, leave blank to keep the default margins.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

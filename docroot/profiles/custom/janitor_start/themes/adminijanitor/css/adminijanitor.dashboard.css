@@ -1,0 +1,114 @@
+/**
+ * @file
+ * Default styles for the workbench/dashboard menu
+ */
+
+/* Content */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content:before {
+  content: '\f15b';
+}
+
+/* Manage content */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--manage::before {
+  content: '\f558';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--manage--my-drafts::before {
+  content: '\f591';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--manage--my-content::before {
+  content: '\f507';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--manage--moderation:before {
+  content: '\f46c';
+}
+
+/* Create content */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add::before {
+  content: '\f055  ';
+  font-weight: 900;
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--article::before {
+  content: '\f1ea';
+  font-weight: 400;
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--event::before {
+  content: '\f271';
+  font-weight: 400;
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--job::before {
+  content: '\f0b1';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--notice::before {
+  content: '\f651';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--page::before {
+  content: '\f249';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--profile::before {
+  content: '\f3e0';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--product::before {
+  content: '\f290';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--content--add--trade::before {
+  content: '\f362';
+}
+
+/* Quicklink sets */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--quicklinks::before {
+  content: '\f0c1';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--quicklinks--add::before {
+  content: '\f055';
+}
+
+/* Media */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--media::before {
+  content: '\f61f';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--media--add::before {
+  content: '\f055';
+}
+
+/* Taxonomy */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--taxonomy::before {
+  content: '\f02b';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--taxonomy--collection::before {
+  content: '\f02c';
+}
+
+/* Users */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--users::before {
+  content: '\f0c0';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--users--manage::before {
+  content: '\f509';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--users--add::before {
+  content: '\f234';
+}
+
+/* User */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--user::before {
+  content: '\f007  ';
+  font-weight: 900;
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--user--logout::before {
+  content: '\f502';
+}
+
+/* Reports */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--reports::before {
+  content: '\f080';
+}
+
+/* Webforms */
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--webform::before {
+  content: '\f044';
+}
+#sidebar-first .menu li a.jse-admin-dashboard--dashboard--webform--add::before {
+  content: '\f055  ';
+  font-weight: 900;
+}
+

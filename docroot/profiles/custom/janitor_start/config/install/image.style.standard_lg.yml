@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_lg
+label: 'Standard large (landscape 5:4) - Desktops, TVs, etc.'
+effects:
+  cc48130f-11e1-4134-8fff-8549005266bc:
+    uuid: cc48130f-11e1-4134-8fff-8549005266bc
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 768
+      crop_type: focal_point

@@ -1,0 +1,194 @@
+<?php
+/**
+ *
+ * @file
+ * Contains the Design Indaba Mosaic paragraph module
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Custom function to set the allowed values list of the mosaic view mode
+ * options
+ */
+function rw_mosaic_get_view_modes() {
+  //  $view_modes = Drupal::entityQuery('entity_view_mode')
+  //    ->condition('targetEntityType', 'node')
+  //    ->execute();
+  
+  // kint($view_modes);
+  
+  $view_modes = array(
+    //    'banner'   => t('Banner'),
+    'card'     => t('Card'),
+    //    'carousel' => t('Carousel slide'),
+    //    'hero'     => t('Hero'),
+    'teaser'   => t('Teaser'),
+    'slide'    => t('Slide'),
+    //    'headline' => t('Headline only')
+  );
+  
+  return $view_modes;
+}
+
+/**
+ * Implements hook_paragraph_view()
+ *
+ * Attach styles and javascript to render array
+ */
+function rw_mosaic_paragraph_view(&$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->bundle() == 'rw_mosaic') {
+    // Add MOSAIC stylesheets
+    $build['#attached']['library'][] = 'rw_mosaic/mosaic';
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph()
+ *
+ * Customise the output of the referenced entitied depending on the
+ * display mode chosen for the paragraph. The "display mode" here is
+ * ambigious, as it's not a view mode, instead referring to a value
+ * of a field of said paragraph.
+ */
+function rw_mosaic_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  
+  if ($paragraph->bundle() == 'rw_mosaic') {
+    // Hide the original rendering of the field items
+    if (isset($variables['content']['field_items'])) {
+      unset($variables['content']['field_items']);
+    }
+  
+    // $variables['content']['field_items'] = array();
+  
+    // Set up some variables to use later
+    $display    = $paragraph->get('field_mosaic_display')->getValue();
+    // $items        = $paragraph->get('field_items');
+    $items        = $paragraph->field_items->referencedEntities();
+    $view_mode    = $paragraph->get('field_mosaic_viewmode')->value;
+    // $storage      = \Drupal::entityTypeManager()->getStorage('node');
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+    
+    $item_count = $paragraph->field_items->count();
+    // $view_mode  = $paragraph->get('field_view_mode')->getValue();
+  
+    $display = reset($display); // AE: still not sure to get the (only) first
+    //     value only
+    
+    // Add classes and render thingies
+    $variables['attributes']['class'][] = 'rw-paragraph--mosaic--' . $display['value']; // Global display wrapper
+    $variables['attributes']['class'][] = 'rw-paragraph--mosaic--' . $display['value'] . '--' . $item_count; // Global display wrapper with total count
+    $variables['mosaic_count'] = $item_count;
+    $variables['mosaic_display'] = $display['value'];
+  
+    // Is this a slick carousel display?
+    ($display['value'] == 'carousel') ? $is_slick = TRUE : $is_slick = FALSE;
+    ($is_slick) ? $variables['is_slick'] = TRUE : $variables['is_slick'] = FALSE;
+  
+    // Loop through the items and provide more classes and things
+    $mosaic  = array();
+    $classes = array();
+
+    // @TODO: Should we do a switch/case for future display types?
+    if ($is_slick) {
+      // Attach special styles
+      $variables['#attached']['library'][] =  'rw_pagebuilder/slick';
+      
+      // Prepare slick slider
+      foreach ($items as $delta => $slide) {
+        $mosaic[$delta]['slide'] = $view_builder->view($slide, $view_mode);
+        $classes[$delta] = 'rw-paragraph--mosaic--' . $display['value'] . '--item';
+        
+        // kint($items[$delta]);
+      }
+      // kint($mosaic);
+      // $variables['content']['mosaic'][$delta] = $mosaic;
+      $carousel = rw_mosaic_render_slick($mosaic);
+      $variables['content']['mosaic'] = rw_mosaic_render_slick($mosaic);
+    }
+    else {
+      // Prepare content normally
+      foreach ($items as $delta => $reference) {
+        // kint($reference);
+        //$node = $storage->load($reference->target_id);
+        $node = $reference;
+
+        // kint($node);
+        $mosaic[$delta] = $view_builder->view($node, $view_mode);
+        $classes[$delta] = 'rw-paragraph--mosaic--' . $display['value'] . '--item';
+      }
+      // Render the whole collection
+      $variables['content']['mosaic'] = $mosaic;
+    }
+    
+  }
+  
+  // kint($variables['content']);
+}
+
+/**
+ * Render a Hero Slick carousel
+ *
+ * @param array $items
+ *    A required array of slick contents: text, image or media.
+ *    $items['slide']   - The HTML markup of an image, e.g.
+ *                       '<img src="https://drupal.org/files/Three.gif" />',
+ *    $items['caption'] - A render array for text, image or media
+ *
+ *
+ * @return array $element
+ *    A render array of a slick carousel
+ */
+function rw_mosaic_render_slick($items) {
+  // kint($items);
+  
+  // Invoke the plugin class, or use a DI service container accordingly.
+  $slick = \Drupal::service('slick.manager');
+  // Access the formatter service for image-related methods:
+  $formatter = \Drupal::service('slick.formatter');
+  
+  $build = [];
+  
+  // Pass the $items to the array.
+  $build['items'] = $items;
+  
+  // If no optionset name is provided via $build['settings'], slick will
+  // fallback to 'default'.
+  // Optionally override 'default' optionset with custom JS options.
+  $build['options'] = [
+    'autoplay' => TRUE,
+    'dots'     => TRUE,
+    'arrows'   => TRUE,
+  ];
+  
+  $element = $slick->build($build);
+  // Prepare $variables to pass into a .twig.html file.
+  $variables['slick'] = $element;
+  
+  return $element;
+}
+
+
+/**
+ * Implements hook_theme()
+ *
+ * Provide a template for the mosaic paragraph type
+ */
+function rw_mosaic_theme() {
+  $theme = array();
+  
+  // Provide a template for the Mosaic paragraph type
+  $theme['paragraph__rw_mosaic'] = array(
+    'base hook' => 'paragraph',
+    'path'      => drupal_get_path('module', 'rw_mosaic') . '/templates',
+  );
+  
+  
+  return $theme;
+}
+

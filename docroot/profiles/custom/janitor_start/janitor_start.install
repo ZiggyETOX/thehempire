@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the Rogerwilco Labs Webstart
+ * install profile.
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\shortcut\Entity\Shortcut;
+use Drupal;
+
+/**
+ * Implements hook_install()
+ *
+ * Preforms actions to set up the site for this profile
+ *
+ * @see system_install()
+ */
+function janitor_start_install() {
+  // AE: This is initially based on the Standard Install
+  // Set front page to "node".
+  Drupal::configFactory()->getEditable('system.site')->set('page.front', '/node')->save(TRUE);
+  
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access comments']);
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access comments', 'post comments', 'skip comment approval']);
+  
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+  
+  // Create default nodes/terms/etc
+  
+  // Set the default theme to Bartik
+//  Drupal::configFactory()
+//    ->getEditable('system.theme')
+//    ->set('default', 'bartik')
+//    ->save();
+}

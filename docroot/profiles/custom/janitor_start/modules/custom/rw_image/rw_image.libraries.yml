@@ -1,0 +1,5 @@
+image-row:
+  version: 1.x
+  css:
+    layout:
+      css/rw_image.module.css: {}

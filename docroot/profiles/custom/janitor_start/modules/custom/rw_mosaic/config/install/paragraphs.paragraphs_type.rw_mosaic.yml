@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GhY-7jL9-A4DNYakhwzPahr6-mJ3IuaWZnxbJywy7Bg
+id: rw_mosaic
+label: 'Mosaic (multi content reference)'
+icon_uuid: null
+description: 'Reference nodes from other content types with display options like "grid", "masonry", "carousel", etc.'
+behavior_plugins: {  }

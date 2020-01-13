@@ -1,0 +1,7 @@
+name: 'Page builder'
+type: module
+description: 'Additional options to alter the way (node) pages render'
+core: 8.x
+package: 'Rogerwilco'
+dependencies:
+  - paragraphs

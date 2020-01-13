@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Contains rw_image.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\image\Entity\ImageStyle;
+
+
+/**
+ * Implements hook_paragraph_view()
+ *
+ * Attach styles and javascript to the render array
+ *
+ * {@inheritdoc}
+ */
+function rw_image_paragraph_view(&$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->bundle() == 'rw_image_row') {
+    // Add the hero stylesheets
+    $build['#attached']['library'][] = 'rw_image/image-row';
+    
+    // kint($build);
+    // kint($entity);
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph()
+ *
+ * Add classes to image container in order to apply the selected modifier
+ * options on the paragraph row
+ */
+function rw_image_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  
+  if ($paragraph->bundle() == 'rw_image_row') {
+    $variables['attributes']['class'][] = 'rw-paragraph--image-row';
+    
+    // Horizontal options
+    $horizontal = $paragraph->get('field_horizontal');
+    
+    foreach ($horizontal->getIterator() as $delta => $option) {
+      // @TODO: There's probably a less convoluted way to do this part
+      $value = $option->getValue();
+      switch ($value['value']) {
+        case 'wide':
+          $variables['attributes']['class'][] = 'rw-paragraph--image-row--wide';
+          break;
+          
+        case 'full':
+          $variables['attributes']['class'][] = 'rw-paragraph--image-row--full';
+          break;
+
+      }
+      // kint($option);
+    }
+    
+    foreach ($paragraph->get('field_vertical')->getIterator() as $delta => $option) {
+      $value = $option->getValue();
+      switch ($value['value']) {
+        case 'top':
+          $variables['attributes']['class'][] = 'rw-paragraph--image-row--pull-top';
+          break;
+          
+        case 'bottom':
+          $variables['attributes']['class'][] = 'rw-paragraph--image-row--pull-bottom';
+          break;
+      }
+      // kint($option);
+    }
+    
+    // kint($variables);
+  }
+}
+
+/**
+ * Implements hook_theme()
+ *
+ * Provide alternative templates for some theme hooks
+ */
+function rw_image_theme() {
+  $theme = array();
+  
+  $theme['paragraph__rw_image_row'] = array(
+    'base hook'   => 'paragraph',
+    'path'        => drupal_get_path('module', 'rw_image') . '/templates',
+  );
+  
+  return $theme;
+}

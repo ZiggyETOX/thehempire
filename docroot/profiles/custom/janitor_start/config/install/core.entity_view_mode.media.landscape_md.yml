@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.landscape_md
+label: 'Standard medium (Landscape 5:4)'
+targetEntityType: media
+cache: true

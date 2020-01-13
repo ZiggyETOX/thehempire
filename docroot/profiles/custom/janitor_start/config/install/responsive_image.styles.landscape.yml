@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.square_med
+    - image.style.square_sml
+    - image.style.standard_lg
+    - image.style.standard_med
+    - image.style.standard_nano
+    - image.style.standard_sml
+  theme:
+    - adminijanitor
+_core:
+  default_config_hash: 3BVPk8bOe6GRqW5zKmw_eNqRfubSWs3Ge_TWqPYxzgM
+id: landscape
+label: 'Standard (Landscape 5:4)'
+image_style_mappings:
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: standard_lg
+  -
+    breakpoint_id: theme_name.xxlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: standard_lg
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: standard_med
+  -
+    breakpoint_id: theme_name.xlarge
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: standard_lg
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: standard_med
+  -
+    breakpoint_id: theme_name.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: standard_lg
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: square_sml
+  -
+    breakpoint_id: theme_name.medium
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: square_med
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: standard_nano
+  -
+    breakpoint_id: theme_name.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: standard_sml
+breakpoint_group: adminijanitor
+fallback_image_style: standard_med

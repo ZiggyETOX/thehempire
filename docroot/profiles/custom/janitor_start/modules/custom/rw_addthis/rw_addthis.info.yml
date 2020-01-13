@@ -1,0 +1,7 @@
+name: 'RW AddThis integration'
+type: module
+description: 'Custom module to implement addthis.com share code and monitoring into a Drupal site.'
+core: 8.x
+package: Rogerwilco
+dependencies:
+version: 8.x-1.0

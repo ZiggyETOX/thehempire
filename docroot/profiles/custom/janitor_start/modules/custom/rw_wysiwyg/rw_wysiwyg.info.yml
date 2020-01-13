@@ -1,0 +1,8 @@
+name: 'Page builder: Formatted text (WYSIWYG)'
+type: module
+description: 'A paragraph row for formatted text and advanced options to place pull-quotes and/or images, etc.'
+core: 8.x
+package: 'Rogerwilco'
+dependencies:
+  - rw_pagebuilder
+  - paragraphs

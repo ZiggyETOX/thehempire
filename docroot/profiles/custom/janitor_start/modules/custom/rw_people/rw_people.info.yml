@@ -1,0 +1,5 @@
+name: 'People'
+type: module
+description: 'Provides content entity specifically more suited for capturing bpersonal information, like team members or organograms'
+core: 8.x
+package: 'Rogerwilco'

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: letterbox_lg
+label: 'Letterbox large (16:9) - Desktops, TVs, etc.'
+effects:
+  0aacbe8f-0636-48a1-8f6f-34616bd7d998:
+    uuid: 0aacbe8f-0636-48a1-8f6f-34616bd7d998
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 1080
+      crop_type: focal_point

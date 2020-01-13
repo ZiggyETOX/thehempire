@@ -1,0 +1,30 @@
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: QWAmBbfaQ3Iby8u8KbImDPIKPfS70iQO_C-0pSjx170
+id: dev
+label: 'Development config'
+description: 'Debugging and development environment only config'
+folder: ../config/dev
+module:
+  devel: 0
+  kint: 0
+  search_kint: 0
+  features: 0
+  features_ui: 0
+theme: {  }
+blacklist:
+  - captcha.captcha_point.contact_message_feedback_form
+  - captcha.captcha_point.contact_message_personal_form
+  - captcha.captcha_point.user_login_form
+  - captcha.captcha_point.user_pass
+  - captcha.captcha_point.user_register_form
+  - captcha.settings
+  - devel.settings
+  - devel.toolbar.settings
+graylist:
+  - file.settings
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

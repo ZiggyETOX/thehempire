@@ -1,0 +1,162 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.rw_image_browser
+    - field.field.node.article.body
+    - field.field.node.article.field_image
+    - field.field.node.article.field_image_ref
+    - field.field.node.article.field_tags
+    - node.type.article
+  module:
+    - entity_browser
+    - field_group
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_article_settings:
+      children:
+        - group_article_copy
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: node--form--article
+        classes: node--form--article
+        direction: vertical
+      label: 'Article configuration'
+      region: content
+    group_article_copy:
+      children:
+        - title
+        - field_image_ref
+        - body
+        - field_tags
+      parent_name: group_article_settings
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: node--form--article--copy
+        classes: node--form--article--copy
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Copy and setup'
+      region: content
+    group_article_image:
+      children: {  }
+      parent_name: ''
+      weight: 8
+      format_type: tab
+      format_settings:
+        id: node--form--article--image
+        classes: node--form--article--image
+        formatter: closed
+        description: ''
+        required_fields: false
+      label: Image
+      region: hidden
+_core:
+  default_config_hash: dZsB-zAL6ORIlcOZP-FMkxtn8YEXjB6pz2dOoHPl4wk
+id: node.article.default
+targetEntityType: node
+bundle: article
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image_ref:
+    weight: 3
+    settings:
+      entity_browser: rw_image_browser
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      field_widget_replace: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: entity_browser_single_
+      field_widget_edit: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_tags:
+    type: entity_reference_autocomplete_tags
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_image: true

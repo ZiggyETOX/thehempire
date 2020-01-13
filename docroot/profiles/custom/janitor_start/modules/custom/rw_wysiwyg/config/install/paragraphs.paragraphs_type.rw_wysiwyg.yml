@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rw_wysiwyg
+label: WYSIWYG
+icon_uuid: null
+description: 'Formatted text with option advanced options, e.g. Pullquote'
+behavior_plugins: {  }

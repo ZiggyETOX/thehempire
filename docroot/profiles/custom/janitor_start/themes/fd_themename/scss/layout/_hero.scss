@@ -1,0 +1,210 @@
+// HERO
+#hero { width: 100%; height: auto; min-height: 280px; background: $primary-color url('../images/global-self-care-foundation-pattern-bg.jpg') no-repeat; background-size: cover; position: relative; display: flex; align-items: center;
+
+	// ie bug fix
+	&:after{
+		content: '';
+		min-height: inherit;
+		font-size: 0;
+	}
+
+	// hero region
+	.region-hero { width: 100%; position: relative; z-index: 1; }
+
+	// breadcrumb
+	.block-system-breadcrumb-block {
+		@include xy-cell(12, true, $grid-margin-gutters, margin, right left, small, false);
+		@include breakpoint(medium) {
+			@include xy-cell(12, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+		ol { margin: 0; padding: 0; list-style-type: none; }
+		li { color: $white; display: inline; font-size: 0.85rem; text-transform: capitalize;
+			&:before { content: '>'; display: inline; margin: 0 4px; }
+			&:first-child {
+				&:before { display: none; }
+			}
+			a { color: $white; }
+		}
+	}
+
+	// page title
+	.block-page-title-block { color: $white;
+		@include xy-cell(12, true, $grid-margin-gutters, margin, right left, small, false);
+		@include breakpoint(medium) {
+			@include xy-cell(12, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+		h1.page-title { margin-bottom: 0; line-height: 1.2em; }
+	}
+
+}
+
+// is front
+body.path-frontpage {
+	#hero {
+
+		// page title
+		.block-page-title-block {
+			h1.page-title { text-align: center; margin: rem-calc(64) 0; }
+			@include breakpoint(large) {
+				@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+				@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+			}
+			@include breakpoint(xlarge) {
+				@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+				@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+			}
+		}
+
+		// frontpage features
+		.block-views-blockfrontpage-block-1 {
+			.views-view-grid {
+				& > div { margin: 0;
+					& > div { overflow: hidden;
+						@include xy-cell(12, false, 0, margin, top right bottom left, null, false);
+						margin: 0; border-bottom: 2px solid $white;
+						@include breakpoint(medium) {
+							@include xy-cell(1 of 2, false, 0, margin, top right bottom left, null, false);
+						}
+						@include breakpoint(large) {
+							@include xy-cell(1 of 4, false, 0, margin, top right bottom left, null, false);
+						}
+						@include breakpoint(small only) {
+							&:nth-child(4) { border-bottom: 0; }
+						}
+						@include breakpoint(medium only) {
+							&:nth-child(1) { border-right: 1px solid $white; }
+							&:nth-child(2) { border-left: 1px solid $white; }
+							&:nth-child(3) { border-bottom: 0; border-right: 1px solid $white; }
+							&:nth-child(4) { border-bottom: 0; border-left: 1px solid $white; }
+						}
+						@include breakpoint(large) {
+							border-bottom: 0;
+							&:nth-child(1) { border-right: 1px solid $white; }
+							&:nth-child(2) { border-right: 1px solid $white; border-left: 1px solid $white; }
+							&:nth-child(3) { border-right: 1px solid $white; border-left: 1px solid $white; }
+							&:nth-child(4) { border-left: 1px solid $white; }
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
+
+// is node
+body.path-node:not(.page-node-type-page) {
+	#hero {
+		// black overlay
+		&:before { content: ''; position: absolute; width: 100%; height: 100%; background: transparentize($black, 0.4); top: 0; left: 0; display: block; z-index: 0; }
+	}
+
+	// is article or event
+	&.page-node-type-article, &.page-node-type-event {
+
+		// has one sidebar
+		&.has-one-sidebar {
+			#hero {
+				.region-hero {
+					// breadcrumb + page title
+					.block-system-breadcrumb-block,
+					.block-page-title-block {
+						@include breakpoint(large) {
+							@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+							@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+						}
+						@include breakpoint(xlarge) {
+							@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+							@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+						}
+					}
+				}
+			}
+		}
+
+		// has both sidebars
+		&.has-both-sidebars {
+			#hero {
+				.region-hero {
+					// breadcrumb + page title
+					.block-system-breadcrumb-block,
+					.block-page-title-block {
+						@include breakpoint(large) {
+							@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+							@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+						}
+					}
+				}
+			}
+		}
+
+		// has no sidebars
+		&.has-no-sidebars {
+
+			// is article or event
+			&.page-node-type-article, &.page-node-type-event {
+
+				#hero {
+					.region-hero {
+						// breadcrumb + page title
+						.block-system-breadcrumb-block,
+						.block-page-title-block {
+							@include breakpoint(large) {
+								@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+								@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+							}
+							@include breakpoint(xlarge) {
+								@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+								@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+}
+
+// is webform
+body.path-webform {
+	#hero {
+		.region-hero {
+			// breadcrumb + page title
+			.block-system-breadcrumb-block,
+			.block-page-title-block {
+				@include breakpoint(large) {
+					@include xy-cell(10, true, $grid-margin-gutters, margin, right left, medium, false);
+					@include xy-cell-offset(1, $grid-margin-gutters, margin, large, false);
+				}
+				@include breakpoint(xlarge) {
+					@include xy-cell(8, true, $grid-margin-gutters, margin, right left, medium, false);
+					@include xy-cell-offset(2, $grid-margin-gutters, margin, large, false);
+				}
+			}
+		}
+	}
+}
+
+// 403 & 404
+body.page-node-5,
+body.page-node-6 {
+	#hero {
+		.block-system-breadcrumb-block { display: none; }
+		.block-page-title-block { text-align: center;
+			h1.page-title { font-size: 4rem; }
+		}
+		@include breakpoint(medium) {
+			min-height: 400px;
+			.block-page-title-block {
+				h1.page-title { font-size: 10rem; }
+			}
+		}
+		@include breakpoint(large) {
+			min-height: 600px;
+			.block-page-title-block {
+				h1.page-title { font-size: 18rem; }
+			}
+		}
+	}
+}

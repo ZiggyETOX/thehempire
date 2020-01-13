@@ -1,0 +1,10 @@
+name: 'Page builder: Micro views'
+description: 'Adds a paragraph type that provides a simplistic edition of the views module'
+type: module
+core: 8.x
+dependencies:
+  - field
+  - options
+  - paragraphs
+version: 8.x-1.0
+package: 'Rogerwilco'

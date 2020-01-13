@@ -1,0 +1,89 @@
+<?php
+/**
+ * @file
+ * Contains the addthis module code.
+ */
+
+use Drupal\node\Entity\NodeType;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_extra_field_info().
+ *
+ * Provide a field to embed the inline code for the AddThis.com settings
+ */
+function rw_addthis_entity_extra_field_info() {
+  $extra = array();
+  
+  // @TODO: Configure with simple configuration
+  foreach (NodeType::loadMultiple() as $bundle) {
+    $extra['node'][$bundle->Id()]['display']['rw_addthis_inline_share_toolbox'] = array(
+      'label'       => t('AddThis.com inline share toolbox'),
+      'description' => t('Places the code AddThis.com needs if inline sharing is enabled on your account. Visit addthis.com to configure'),
+      'weight'      => 100,
+      'visible'     => FALSE,
+    );
+  }
+  
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ *
+ * Render the pseudo-field if configured to display
+ */
+function rw_addthis_node_view(array &$build, EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode = NULL) {
+
+  if ($display->getComponent('rw_addthis_inline_share_toolbox')) {
+    
+    $build['rw_addthis_inline_share_toolbox'] = [
+      '#theme'        => 'addthis__inline_share_toolbox',
+    ];
+  }
+}
+
+/**
+ * Creates a theme hook to provide templates for the addthis embed code into
+ * the right areas of the page
+ */
+function rw_addthis_theme() {
+  $theme = [];
+  
+  // The addthis unique code snippet that needs to be placed at the bottom of
+  // the page (before closing </body> tag
+  $theme['addthis__closing_body'] = [
+    'template'       => 'addthis--closing-body',
+    'path'           => drupal_get_path('module', 'rw_addthis') . '/templates',
+    'variables'      => [
+      'addthis_code' => NULL,
+    ],
+  ];
+  
+  // Inline share buttons
+  $theme['addthis__inline_share_toolbox'] = [
+    'template'              => 'addthis--inline-share-toolbox',
+    'path'                  => drupal_get_path('module', 'rw_addthis') . '/templates',
+    'variables'             => [
+      'inline_toolbox_code' => NULL,
+    ],
+  ];
+  
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() (html)
+ *
+ * Place the AddThis.com generated code before the closing </body> tag
+ */
+function rw_addthis_preprocess_html(&$variables) {
+  $config = \Drupal::config('rw_addthis.adminsettings');
+  
+  $variables['page_bottom']['addthis__closing_body'] = [
+    '#theme'        => 'addthis__closing_body',
+    '#addthis_code' => $config->get('addthis_public_id'),
+    '#weight'       => 100,
+  ];
+  // kint($variables);
+}

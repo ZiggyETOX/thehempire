@@ -1,0 +1,6 @@
+rw_addthis.admin_settings_form:
+  title: 'AddThis.com global settings'
+  route_name: rw_addthis.admin_settings_form
+  description: 'Welcome message admin'
+  parent: system.admin_config_content
+  weight: 99

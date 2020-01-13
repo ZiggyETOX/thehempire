@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - options
+id: media.field_mime_select
+field_name: field_mime_select
+entity_type: media
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: text/plain
+      label: 'Plain text'
+    -
+      value: application/msword
+      label: 'Microsoft® Word document (.doc)'
+    -
+      value: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      label: 'Microsoft® Word document (.docx)'
+    -
+      value: application/vnd.ms-excel
+      label: 'Microsoft® Excel (.xls)'
+    -
+      value: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      label: 'Microsoft® Excel (.xlsx)'
+    -
+      value: application/pdf
+      label: 'Acrobat® Portable Document (.pdf)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

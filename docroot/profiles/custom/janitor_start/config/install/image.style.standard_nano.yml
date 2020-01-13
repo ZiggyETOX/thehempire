@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_nano
+label: 'Standard nano (5:4) - Smaller than mobile portrait width'
+effects:
+  7001c228-0f02-4af9-bb26-8dfd64ce07ac:
+    uuid: 7001c228-0f02-4af9-bb26-8dfd64ce07ac
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 160
+      height: 120
+      crop_type: focal_point

@@ -1,0 +1,5 @@
+wysiwyg:
+  version: 1.x
+  css:
+    theme:
+      css/rw_wysiwyg.theme.css: {}

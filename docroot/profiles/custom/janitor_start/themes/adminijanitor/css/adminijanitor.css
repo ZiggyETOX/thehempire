@@ -1,0 +1,191 @@
+/**
+ * @file
+ * Additional styling for the adminjse sub-theme
+ */
+
+/* Globals */
+:root {
+  --rw-primary-color: #444;
+  --rw-secondary-color: #bfbfba;
+  --rw-menu-text-color: #797979;
+  --rw-menu-line-height: 30px;
+  --rw-link-text-color: #0074bd;
+  --rw-gutter: 2.5em;
+}
+
+/* Admin page layout with sidebar */
+#main-wrapper {
+  display: block;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+/* Sidebar first */
+#sidebar-first {
+  background: var(--rw-secondary-color, #bfbfba);
+  -webkit-flex: 1; /* 280px; */
+  flex: 1; /* 280px; /* Small display width */
+  min-width: 280px;
+  width: 320px;
+}
+#sidebar-first .block-menu {
+  margin: 0 0 var(--rw-gutter, 2em) 0;
+  /*border-bottom: 1px solid #ababab;*/
+}
+#sidebar-first .contextual-icon::after {
+  content: '';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: block;
+  float: right;
+  top: 0;
+  right: 0;
+  line-height: 30px;
+  /*background: #898989;*/
+  width: 30px;
+  color: var(--rw-primary-color, #444);
+  text-align: center;
+  vertical-align: center;
+  /*border-left: 1px dotted var(--rw-secondary-color, #bebebe);*/
+}
+#sidebar-first .contextual-icon:hover::after {
+  color: var(--rw-link-text-color, #0074bd);
+  background: #898989;
+}
+
+#sidebar-first .menu-item--expanded > .contextual-icon::after {
+  content: '\f054';
+}
+#sidebar-first .menu-item--expanded > .contextual-icon.is-active::after {
+  content: '\f078';
+}
+#sidebar-first .menu {
+  margin: 0;
+  padding: 0;
+  transition: display 0.5s ease-in, opacity 0.5s ease-in;
+}
+#sidebar-first .menu li {
+  margin: 0;
+  padding: 0;
+  line-height: 30px;
+  list-style: none;
+  cursor: pointer;
+}
+#sidebar-first .menu li a::before {
+  content: '\f22d';
+  display: inline-block;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  /*font-size: 0.9em;*/
+  color: #898989;
+  line-height: 30px;
+  vertical-align: center;
+  margin-right: 6px;
+  min-width: 20px;
+  /*background: red;*/
+}
+#sidebar-first .menu li a {
+  box-sizing: border-box;
+  display: block;
+  line-height: 30px;
+  color: var(--rw-primary-color, #444);
+  padding: 0 var(--rw-gutter, 2em);
+  line-height: 30px;
+  border-bottom: 1px solid #ababab;
+}
+#sidebar-first .menu li a:hover {
+  color: var(--rw-link-text-color, #0074bd);
+  text-decoration: none;
+}
+#sidebar-first .menu-item--expanded .menu {
+}
+#sidebar-first .menu-item--expanded .menu a {
+  background: #d9d9d4;
+  border-color: #d4d4cf;
+  /*color: var(--rw-secondary-color, #bfbfba);*/
+}
+#sidebar-first .menu .menu-item--expanded .menu a:hover {
+  /*background: yellow;*/
+  /*color: var(--rw-link-text-color, #0074bd);*/
+}
+#sidebar-first .menu-item--expanded .menu a:active
+#sidebar-first .menu-item--expanded .menu a.is-active {
+  background: var(--rw-primary-color, #444);
+  color: #fff;
+}
+#sidebar-first .menu .menu-item--active-trail > a {
+  font-weight: bolder;
+}
+#sidebar-first .menu a.is-active {
+  font-weight: bolder;
+  border-right: 3px solid var(--rw-link-text-color, #0074bd);
+  /*background: yellow;*/
+  color: var(--rw-link-text-color, #0074bd);
+  text-decoration: none;
+}
+#sidebar-first .menu-level-1 li a {
+
+  padding-left: calc(var(--rw-gutter, 2em) + 12px);
+}
+#sidebar-first .menu-level-2 li a {
+
+  padding-left: calc(var(--rw-gutter, 2em) + 24px);
+}
+#sidebar-first .menu-level-3 li a {
+
+  padding-left: calc(var(--rw-gutter, 2em) + 36px);
+}
+#sidebar-first .menu-level-4 li a {
+  padding-left: calc(var(--rw-gutter, 2em) + 48px);
+}
+
+/* Page content */
+#page-content {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  min-height: calc(100vh - 220px);
+  padding: 7px var(--rw-gutter, 2em);
+}
+
+/* Content edit forms */
+.node-form .entity-meta details[open] {
+  background-image: none;
+}
+.node-form .entity-meta__header,
+.node-form .entity-meta details {
+  /*border-top: 0 none transparent;*/
+  /*border-bottom: 0 none transparent;*/
+}
+.node-form .entity-meta__header:first-child,
+.node-form .entity-meta details:first-child {
+  /*border-top-color: transparent;*/
+}
+@media screen and (min-width: 768px) {
+  .node-form .layout-region-node-main,
+  .node-form .layout-region-node-footer {
+    float: inherit;
+    /* LTR */
+    width: 100%;
+    padding-right: 0;
+    /* LTR */
+    box-sizing: border-box;
+  }
+  .node-form [dir="rtl"] .layout-region-node-main,
+  .node-form [dir="rtl"] .layout-region-node-footer {
+    float: inherit;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .node-form .layout-region-node-secondary {
+    float: inherit;
+    /* LTR */
+    width: 100%;
+  }
+  .node-form [dir="rtl"] .layout-region-node-secondary {
+    float: inherit;
+  }
+}

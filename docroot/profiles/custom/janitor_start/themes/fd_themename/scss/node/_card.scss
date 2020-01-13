@@ -1,0 +1,9 @@
+// CARD
+.node--view-mode-card { height: 100%; background: $light-gray;
+	.card-image {
+		img { width: 100%; max-width: none; }
+	}
+	.card-content { padding: 1rem;
+		h3 { font-size: 1.25rem; font-weight: 500; }
+	}
+}

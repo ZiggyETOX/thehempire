@@ -1,0 +1,82 @@
+// FOOTER
+footer#footer { background: $light-gray; padding-top: 1rem;
+	@include breakpoint(medium) {
+		padding-top: 2rem;
+	}
+	.region-footer { @include xy-cell(); }
+	.region-footer-first,
+	.region-footer-second,
+	.region-footer-third,
+	.region-footer-last { @include xy-cell(); margin-bottom: rem-calc(32);
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+	}
+	.region-footer-first {
+		@include breakpoint(medium) {
+			@include xy-cell(5, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+		@include breakpoint(large) {
+			@include xy-cell(3, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+	}
+	.region-footer-second,
+	.region-footer-third {
+		@include breakpoint(medium) {
+			@include xy-cell(3.5, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+		@include breakpoint(large) {
+			@include xy-cell(2, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+	}
+	.region-footer-second { margin-bottom: 0; }
+	.region-footer-last { margin-bottom: 0;
+		@include breakpoint(medium) {
+			@include xy-cell(12, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+		@include breakpoint(large) {
+			@include xy-cell(5, true, $grid-margin-gutters, margin, right left, medium, false);
+		}
+	}
+}
+
+// email subscription
+.region-footer-first {
+	.block-webform-block { margin-bottom: rem-calc(16);
+		h2 { font-size: 1.125rem; font-weight: 500; }
+		input[type="email"] { margin-bottom: 10px; }
+		.button { width: 100%; }
+		@include breakpoint(medium) {
+			.button { width: auto; }
+		}
+		@include breakpoint(large) {
+			margin-bottom: rem-calc(32);
+		}
+	}
+	#block-gsf-footer-sociallist {
+		ul.social-item-list { text-align: center;
+			li { margin: 0 10px; }
+			@include breakpoint(medium) { text-align: left;
+				li { margin: 0 10px 0 0; }
+			}
+		}
+	}
+}
+
+// footer menus
+#block-footer,
+#block-footersecond-2 {
+	ul.menu {
+		li.menu-item { width: 100%; margin: 0 10px;
+			a { padding-left: 0; padding-right: 0; color: $black; text-transform: uppercase; text-align: center; }
+			@include breakpoint(medium) {
+				a { text-transform: none; text-align: left; }
+			}
+		}
+	}
+}
+
+// map screenshot
+#gsf-map {
+	img { width: 100%; max-width: none; border: 1px solid $medium-gray; margin-bottom: rem-calc(8); }
+}

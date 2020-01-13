@@ -1,0 +1,24 @@
+// MICROVIEW
+.rw-paragraph--microview {
+
+	// node
+	.node__submitted { margin-bottom: 0 !important; }
+
+	// grid
+	&.rw-paragraph--microview--grid { grid-gap: 0.5rem;
+		@include breakpoint(medium) { grid-gap: 1rem; }
+		@include breakpoint(xlarge) { grid-gap: 2rem; }
+
+		// teaser
+		.node--view-mode-teaser {
+			.teaser-image { @include xy-cell(12, false, 0, margin, none, small, false); }
+			.teaser-content { @include xy-cell(12, false, 0, margin, none, small, false); }
+			@include breakpoint(medium) {
+				.teaser-image { @include xy-cell(12, false, 0, margin, none, medium, false); }
+				.teaser-content { @include xy-cell(12, false, 0, margin, none, medium, false); }
+			}
+		}
+
+	}
+
+}

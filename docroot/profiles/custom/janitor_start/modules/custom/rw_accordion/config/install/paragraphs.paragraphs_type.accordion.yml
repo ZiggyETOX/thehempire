@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: accordion
+label: Accordion
+icon_uuid: null
+description: 'Create a list of terms with definitions, or questions with answers. Also known as "Collapsable content". E.g. Frequently Asked Questions (FAQ)'
+behavior_plugins: {  }

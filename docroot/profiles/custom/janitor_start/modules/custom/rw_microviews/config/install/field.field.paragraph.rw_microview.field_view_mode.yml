@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_view_mode
+    - paragraphs.paragraphs_type.rw_microview
+  module:
+    - options
+id: paragraph.rw_microview.field_view_mode
+field_name: field_view_mode
+entity_type: paragraph
+bundle: rw_microview
+label: 'View mode'
+description: 'Select the preferred view mode this content will display in. If this view mode is not configured for the content type to display, the content type''s default view mode will be used.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,9 @@
+rw_addthis.admin_settings_form:
+  path: '/admin/config/services/addthis'
+  defaults:
+    _form: '\Drupal\rw_addthis\Form\AddThisForm'
+    _title: 'AddThis.com global settings'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

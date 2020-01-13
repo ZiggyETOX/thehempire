@@ -1,0 +1,162 @@
+/**
+ * @file
+ * Default layout implementation for the mosaic row type (similar to microviews)
+ */
+.rw-paragraph--mosaic {
+  /* display: block; /* AE: Default fallback */
+  /* margin: 30px 0; */
+  /* margin: var(--rw-gutter, 30px) 0; /* JA: Added wrapper */
+  box-sizing: border-box;
+}
+.rw-paragraph--mosaic .node--view-mode-banner,
+.rw-paragraph--mosaic .node--view-mode-slide {
+  padding: var(--rw-gutter, 30px);
+  box-sizing: border-box;
+}
+.rw-paragraph--mosaic .node {
+  box-sizing: border-box; /* AE: This will probably end up !important */
+}
+
+/* --== HORIZONTAL SETUP ==-- */
+.rw-paragraph--mosaic--full {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0 var(--rw-gutter);
+}
+.rw-paragraph--microview--wide {
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen
+and (min-width : 1440px) {
+  .rw-paragraph--mosaic--wide {
+    margin: var(--rw-gutter) -72px;
+    margin-left: calc(-1 * var(--rw-pull-size));
+    margin-right: calc(-1 * var(--rw-pull-size));
+  }
+}
+
+/* --== COLUMN ==-- */
+/* AE: This should already be styled to fit in a non-formatted column */
+.rw-paragraph--mosaic--col {
+  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-left: -15px;
+  margin-left: calc(var(--rw-gutter, 30px) / 2);
+  margin-right: -15px;
+  margin-right: calc(var(--rw-gutter, 30px) / 2);
+}
+.rw-paragraph--mosaic--col .node--view-mode-banner,
+.rw-paragraph--mosaic--col .node--view-mode-slide {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 0 var(--rw-gutter, 30px) 0;
+}
+.rw-paragraph--mosaic .node {
+  flex-grow: 1;
+  width: 100%;
+  height: auto;
+  /*margin-left: 1.5rem;*/
+  /*margin-right: 1.5rem;*/
+  margin-bottom: 30px;
+  margin-bottom: var(--rw-gutter, 30px);
+}
+
+/* --== ROW ==-- */
+/* AE: Display inline-flex by default TBC** */
+.rw-paragraph--mosaic--row {
+  display: block;
+  display: var(--rw-display--flex, block);
+  justify-content: space-between;
+}
+.rw-paragraph--mosaic--row .node {
+  display: block;
+  float: left;
+  margin-right: var(--rw-gutter, 30px);
+}
+.rw-paragraph--mosaic--row .node:last-child {
+  margin-right: 0;
+}
+.rw-paragraph--mosaic--row--1 .node {
+  width: 100%;
+}
+.rw-paragraph--mosaic--row--2 .node {
+  --rw-width-minus-gutter: calc((100% - (1 * 30px))/2);
+  max-width: var(--rw-width-minus-gutter, 48%)
+}
+.rw-paragraph--mosaic--row--3 .node {
+  --rw-width-minus-gutter: calc((100% - (2 * 30px))/3);
+  max-width: var(--rw-width-minus-gutter, 32%);
+}
+.rw-paragraph--mosaic--row--4 .node {
+  --rw-width-minus-gutter: calc((100% - (3 * 30px))/4);
+  max-width: var(--rw-width-minus-gutter, 23%);
+}
+.rw-paragraph--mosaic--row--5 .node {
+  --rw-width-minus-gutter: calc((100% - (3 * 30px))/4);
+  max-width: var(--rw-width-minus-gutter, 18%);
+}
+.rw-paragraph--mosaic--row--6 .node {
+  --rw-width-minus-gutter: calc((100% - (3 * 30px))/4);
+  max-width: var(--rw-width-minus-gutter, 15%);
+}
+.rw-paragraph--mosaic--row--7 .node {
+  --rw-width-minus-gutter: calc((100% - (3 * 30px))/4);
+  max-width: var(--rw-width-minus-gutter, 23%);
+}
+
+@media only screen and (max-width: 767px) {
+  .rw-paragraph--mosaic--row .node {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+/* --== GRID ==-- */
+.rw-paragraph--mosaic--grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-gap: var(--rw-gutter, 30px);
+}
+
+@supports not (display: grid) {
+  .rw-paragraph--mosaic--grid {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .rw-paragraph--mosaic--grid .node {
+    max-width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    margin-bottom: var(--rw-gutter, 30px);
+  }
+}
+
+/* --== MASONRY ==-- */
+.rw-paragraph--mosaic--mason { /* Masonry container */
+  -moz-column-width: 16em;
+  -webkit-column-width: 16em;
+  column-width: 16em;
+  -moz-column-gap: var(--rw-gutter, 30px);
+  -webkit-column-gap: var(--rw-gutter, 30px);
+  column-gap: var(--rw-gutter, 30px);
+  margin-left: calc(-1 * var(--rw-gutter));
+}
+.rw-paragraph--mosaic--mason .node { /* Masonry bricks or child elements */
+  display: inline-block;
+  margin:  calc(var(--rw-gutter) / 2);
+  padding:  1rem;
+  width:  100%;
+}

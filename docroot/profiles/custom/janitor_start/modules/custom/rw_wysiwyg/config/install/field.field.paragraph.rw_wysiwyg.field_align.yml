@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_align
+    - paragraphs.paragraphs_type.rw_wysiwyg
+  module:
+    - options
+id: paragraph.rw_wysiwyg.field_align
+field_name: field_align
+entity_type: paragraph
+bundle: rw_wysiwyg
+label: Align
+description: 'Select which side advanced content will be aligned. Select "Auto" to let the system randomly decide.'
+required: true
+translatable: false
+default_value:
+  -
+    value: auto
+default_value_callback: ''
+settings: {  }
+field_type: list_string

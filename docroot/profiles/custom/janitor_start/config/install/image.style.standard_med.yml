@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_med
+label: 'Standard medium (5:4) - Tablets, Landscape mobile, etc.'
+effects:
+  d244abd4-b579-4695-9fc7-8d03d560942f:
+    uuid: d244abd4-b579-4695-9fc7-8d03d560942f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 640
+      height: 480
+      crop_type: focal_point

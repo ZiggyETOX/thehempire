@@ -1,0 +1,11 @@
+name: 'Page builder: Accordion'
+type: module
+description: 'Paragraph type to create an accordion row type, for e.g. Frequently asked questions'
+core: 8.x
+package: Rogerwilco
+dependencies:
+  - entity_reference_revisions
+  - field
+  - paragraphs
+  - text
+version: 8.x-1.0

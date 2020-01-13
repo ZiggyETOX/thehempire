@@ -1,0 +1,12 @@
+name: 'Page builder: Image row'
+description: 'Provides a paragraph type to create image rows with options like full width, wide, pull up, down, etc.'
+type: module
+core: 8.x
+dependencies:
+  - field
+  - image
+  - options
+  - paragraphs
+  - rw_pagebuilder
+version: 8.x-1.0
+package: 'Rogerwilco'

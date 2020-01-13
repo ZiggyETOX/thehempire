@@ -1,0 +1,12 @@
+_fmosaic:
+  version: 1.x
+  css:
+    layout:
+      css/rw_mosaic.module.css: {}
+    theme:
+      css/rw_mosaic.theme.css: {}
+slick:
+  version: 1.x
+  css:
+    layout:
+      css/rw_mosaic.slick.theme.css: {}

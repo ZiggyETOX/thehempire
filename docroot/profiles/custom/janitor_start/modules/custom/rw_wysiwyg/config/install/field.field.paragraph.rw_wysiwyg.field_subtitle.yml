@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.rw_wysiwyg
+id: paragraph.rw_wysiwyg.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: rw_wysiwyg
+label: Sub-title
+description: '[Optional] Add a sub-title in the page layout, e.g. "More about us" '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

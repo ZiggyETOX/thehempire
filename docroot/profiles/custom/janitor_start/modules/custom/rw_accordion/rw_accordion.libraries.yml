@@ -1,0 +1,5 @@
+accordion:
+  version: 1.x
+  css:
+    theme:
+      css/rw_accordion.theme.css: {}

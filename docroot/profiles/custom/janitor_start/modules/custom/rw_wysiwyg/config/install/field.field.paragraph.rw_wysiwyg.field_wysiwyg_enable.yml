@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wysiwyg_enable
+    - paragraphs.paragraphs_type.rw_wysiwyg
+id: paragraph.rw_wysiwyg.field_wysiwyg_enable
+field_name: field_wysiwyg_enable
+entity_type: paragraph
+bundle: rw_wysiwyg
+label: 'Enable pull-quote'
+description: 'Check this box to include a brief, attention-catching quotation taken from the main text.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Enabled
+  off_label: Disabled
+field_type: boolean

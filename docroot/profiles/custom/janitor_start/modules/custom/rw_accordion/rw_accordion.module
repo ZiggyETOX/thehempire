@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Contains rw_accordion.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\Core\Entity\EntityViewBuilder;
+use Drupal\Core\Entity\EntityViewBuilderInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rw_accordion_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rw_accordion module.
+    case 'help.page.rw_accordion':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Paragraph type to create an accordion row type, for e.g. Frequently asked questions') . '</p>';
+      return $output; // AE: Heh-heh, this is drupal console output.. nice!
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_paragraph_view()
+ *
+ * Attach styles and javascript to render array
+ */
+function rw_accordion_paragraph_view(&$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // The wrapper paragraph
+  if ($entity->bundle() == 'accordion') {
+    $build['#attached']['library'][] = 'rw_accordion/accordion';
+  }
+  
+  // Each item
+  if ($entity->bundle() == 'accordion_item') {
+    // kint($entity);
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph()
+ *
+ * Fetch the micro view to display in the paragraph template
+ */
+function rw_accordion_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  
+  if ($paragraph->bundle() == 'accordion') {
+    // Add an ID to the attributes so the accordion items can refer to it
+    // (this is for bootstrap to work out the box)
+    $variables['attributes'][] = ['id' => 'accordion-' . $paragraph->id()];
+    
+    // kint($variables);
+  }
+  
+  if ($paragraph->bundle() == 'accordion_item') {
+    // Add a reference to the parent item id
+    $variables['data_parent'] = 'accordion-' . $paragraph->getParentEntity()->id();
+    // Add some ids for local targeting as well
+    $variables['aria_labelledby'] = 'accordion-item-title-' . $paragraph->id();
+    $variables['data_target'] = 'accordion-item-body-' . $paragraph->id();
+    // kint($paragraph);
+  }
+}
+
+/**
+ * Implements hook_theme()
+ *
+ * Provide a template suggestion and theme function to render the accordion
+ * items and wrapper with very specific markup for styling
+ */
+function rw_accordion_theme() {
+  $theme = [];
+  
+  // Provide a template for the accordion paragraph type
+  $theme['paragraph__accordion'] = array(
+    'base hook' => 'paragraph',
+    'path'      => drupal_get_path('module', 'rw_accordion') . '/templates',
+  );
+  
+  $theme['paragraph__accordion_item'] = array(
+    'base hook' => 'paragraph',
+    'path'      => drupal_get_path('module', 'rw_accordion') . '/templates',
+  );
+  
+  return $theme;
+}

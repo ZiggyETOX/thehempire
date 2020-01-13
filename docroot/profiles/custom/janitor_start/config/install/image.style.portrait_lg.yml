@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: portrait_lg
+label: 'Portrait large (4:5) - Desktops, TVs, etc.'
+effects:
+  69fef859-ce4a-426c-9384-d87f6c8783d2:
+    uuid: 69fef859-ce4a-426c-9384-d87f6c8783d2
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 1024
+      crop_type: focal_point

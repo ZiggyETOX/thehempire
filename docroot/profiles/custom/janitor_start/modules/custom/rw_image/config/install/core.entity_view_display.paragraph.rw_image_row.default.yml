@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rw_image_row.field_horizontal
+    - field.field.paragraph.rw_image_row.field_image
+    - field.field.paragraph.rw_image_row.field_vertical
+    - image.style.letterbox_lg
+    - paragraphs.paragraphs_type.rw_image_row
+  module:
+    - image
+id: paragraph.rw_image_row.default
+targetEntityType: paragraph
+bundle: rw_image_row
+mode: default
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: letterbox_lg
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  field_horizontal: true
+  field_vertical: true

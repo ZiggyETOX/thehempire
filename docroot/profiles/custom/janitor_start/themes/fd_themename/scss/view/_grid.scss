@@ -1,0 +1,220 @@
+// GRID
+.views-view-grid {
+
+	// horizontal
+	&.horizontal {
+
+		& > div {
+			@include xy-grid(horizontal, true);
+			@include xy-gutters($grid-margin-gutters, margin, right left, true);
+		}
+
+		// all columns
+		&.cols-1, &.cols-2, &.cols-3,
+		&.cols-4, &.cols-5, &.cols-6,
+		&.cols-7, &.cols-8, &.cols-9,
+		&.cols-10, &.cols-11, &.cols-2 {
+			& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 2 columns
+		&.cols-2 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 3 columns
+		&.cols-3 {
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 3, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 4 columns
+		&.cols-4 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 4, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 5 columns
+		&.cols-5 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 5, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 5, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 6 columns
+		&.cols-6 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 3, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+			@include breakpoint(xlarge) {
+				& > div > div { @include xy-cell(1 of 6, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 7 columns
+		&.cols-7 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 7, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 7, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 8 columns
+		&.cols-8 {
+			@include breakpoint(small) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+			}
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 4, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 8, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 9 columns
+		&.cols-9 {
+			@include breakpoint(small) {
+				& > div > div { @include xy-cell(1 of 3, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+			}
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 9, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 9, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 10 columns
+		&.cols-10 {
+			@include breakpoint(small) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+			}
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 5, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 10, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 11 columns
+		&.cols-11 {
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 11, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 11, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+		// 12 columns
+		&.cols-12 {
+			@include breakpoint(small) {
+				& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+			}
+			@include breakpoint(medium) {
+				& > div > div { @include xy-cell(1 of 6, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+			}
+			@include breakpoint(large) {
+				& > div > div { @include xy-cell(1 of 12, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+			}
+		}
+
+	}
+
+}
+
+// has sidebars
+body.has-one-sidebar, body.has-both-sidebars {
+	.region-content {
+		.views-view-grid {
+
+			// horizontal
+			&.horizontal {
+
+				// 2 columns
+				&.cols-2 {
+					@include breakpoint(medium) {
+						& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+					}
+					@include breakpoint(large) {
+						& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+				}
+
+				// 4 columns
+				&.cols-4 {
+					@include breakpoint(medium) {
+						& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+					}
+					@include breakpoint(large) {
+						& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+					@include breakpoint(xxlarge) {
+						& > div > div { @include xy-cell(1 of 4, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+				}
+
+				// 5 columns
+				&.cols-5 {
+					@include breakpoint(medium) {
+						& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, small, false); }
+					}
+					@include breakpoint(large) {
+						& > div > div { @include xy-cell(1 of 5, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+				}
+
+				// 6 columns
+				&.cols-6 {
+					@include breakpoint(medium) {
+						& > div > div { @include xy-cell(12, true, $grid-margin-gutters, margin, right bottom left, medium, false); }
+					}
+					@include breakpoint(large) {
+						& > div > div { @include xy-cell(1 of 2, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+					@include breakpoint(xlarge) {
+						& > div > div { @include xy-cell(1 of 3, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+					@include breakpoint(xxlarge) {
+						& > div > div { @include xy-cell(1 of 6, true, $grid-margin-gutters, margin, top right bottom left, medium, false); }
+					}
+				}
+
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+

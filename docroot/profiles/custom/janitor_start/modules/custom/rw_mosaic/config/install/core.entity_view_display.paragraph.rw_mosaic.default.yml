@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rw_mosaic.field_items
+    - field.field.paragraph.rw_mosaic.field_mosaic_display
+    - field.field.paragraph.rw_mosaic.field_title
+    - paragraphs.paragraphs_type.rw_mosaic
+id: paragraph.rw_mosaic.default
+targetEntityType: paragraph
+bundle: rw_mosaic
+mode: default
+content:
+  field_items:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: banner
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_mosaic_display: true

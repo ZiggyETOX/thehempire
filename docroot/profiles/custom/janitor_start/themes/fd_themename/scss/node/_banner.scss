@@ -1,0 +1,57 @@
+// BANNER
+.node--view-mode-banner { position: relative; height: 0; padding: 30% 0;
+
+	.field--name-field-image-ref { position: absolute; z-index: 0; top: 50%; left: 0; width: 100%; transform: translate(0, -50%);
+		img { width: 100%; max-width: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width 0.2s ease-in-out; }
+	}
+
+	.banner-content { position: absolute; top: 0; left: 0; z-index: 1; background: transparentize($black, 0.6); height: 100%; width: 100%; display: flex; transition: background 0.2s ease-in-out;
+
+		a { display: flex; flex-direction: column; justify-content: center; flex: 0 0 100%;
+			@include xy-gutters($grid-margin-gutters, padding, top right bottom left, false);
+			footer { color: $white; position: absolute; top: rem-calc(16); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; width: calc(100% - 1rem);
+				.node__submitted { width: calc(100% - 48px); }
+				.banner-topic { position: relative;
+					&:after { font-family: 'FontAwesome'; font-size: 1.4rem; font-weight: normal; line-height: normal; position: absolute; right: 0; top: 0; height: auto; display: block; text-align: center; }
+
+					// useful links
+					&.topic-useful-links {
+						&:after { content: '\f0c1'; }
+					}
+
+					// publications
+					&.topic-publications {
+						&:after { content: '\f02d'; }
+					}
+
+					// faqs
+					&.topic-faqs {
+						&:after { content: '\f29c'; }
+					}
+
+				}
+			}
+			h3 { font-size: 1rem; font-weight: 300; margin-bottom: 0; margin-top: 1rem; text-transform: uppercase; text-align: center; color: $white; }
+			@include breakpoint(medium) {
+				footer { width: calc(100% - 2rem); }
+				h3 { font-size: 1.25rem; }
+			}
+			@include breakpoint(large) {
+				h3 { font-size: 1rem; }
+			}
+			@include breakpoint(xlarge) {
+				h3 { font-size: 1.25rem; }
+			}
+		}
+
+	}
+
+	// hover
+	&:hover {
+		.field--name-field-image-ref {
+			img { width: 120%; }
+		}
+		.banner-content { background: transparentize($black, 0.2); }
+	}
+
+}

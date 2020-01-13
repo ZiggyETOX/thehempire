@@ -1,0 +1,150 @@
+<?php
+
+/**
+ * @file
+ * Contains rw_wysiwyg.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rw_wysiwyg_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rw_wysiwyg module.
+    case 'help.page.rw_wysiwyg':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A paragraph row for formatted text and advanced options to place pull-quotes and/or images, etc.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+// function rw_wysiwyg_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  // kint($element);
+  // kint($context);
+// }
+
+/**
+ * Implements hook_paragraph_view()
+ *
+ * Attach styles and javascript to render array
+ */
+function rw_wysiwyg_paragraph_view(&$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->bundle() == 'rw_wysiwyg') {
+    // Add WYSIWYG stylesheets
+    $build['#attached']['library'][] = 'rw_wysiwyg/wysiwyg';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() (paragraph)
+ *
+ * Render the markup and styles required for pullquotes/images, etc.
+ *
+ * @param array $variables
+ *    The variables available to the paragraph template already
+ */
+function rw_wysiwyg_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+  
+  if ($paragraph->bundle() == 'rw_wysiwyg') {
+    // Add classes and custom variables
+    $variables['attributes']['class'][] = 'rw-paragraph--wysiwyg';
+    // $variables['attributes']['class'][] = 'rw-paragraph--wysiwyg';
+    
+    // Image
+    $has_image = ($paragraph->hasField('field_image_ref') && !$paragraph->get('field_image_ref')->isEmpty()) ? TRUE : FALSE;
+    $variables['has_image'] = $has_image;
+    
+    $align = ($paragraph->hasField('field_align') && !$paragraph->get('field_align')->isEmpty()) ? $paragraph->get('field_align')->value : 'auto';
+    
+    $align_calculated = $align;
+    if ($align == 'auto') {
+      // @TODO: Fifure out which number row this is and stagger alignment
+      // $parent_entity = $paragraph->getParentEntity();
+      // kint($parent_entity);
+      // drupal_set_message($paragraph->get('_referringItem')->getName(), 'warning');
+      
+      // Decide randomly :/ *shrug*
+      if (rand(0, 1)) {
+        $align_calculated = 'first';
+      }
+      else {
+        $align_calculated = 'last';
+      }
+    } // endif auto
+    
+    // Set the variables
+    $variables['align']            = $align;
+    $variables['align_calculated'] = $align_calculated;
+    
+    // Pull-quote
+    $has_pullquote = ($paragraph->get('field_wysiwyg_enable')->value) ? TRUE : FALSE;
+    $variables['has_pullquote'] = $has_pullquote;
+    $variables['pullquote']     = ($has_pullquote) ? $paragraph->get('field_wysiwyg_quote')->value : '';
+    
+    // kint($paragraph);
+    //kint($variables);
+  }
+  
+}
+
+/**
+ * Implements hook_theme()
+ *
+ * Provide default templates for the pagebuilder and theme
+ *
+ * @return array
+ */
+function rw_wysiwyg_theme() {
+  $theme = [];
+  
+  // Provide a default template for this paragraph type. Can still be overridden
+  // by the theme
+  $theme['paragraph__rw_wysiwyg'] = array(
+    'base hook'       => 'paragraph',
+    'path'            => drupal_get_path('module', 'rw_wysiwyg') . '/templates'
+  );
+  
+  return $theme;
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Use conditional fields on the WYSIWYG paragraph type
+ */
+//function rw_wysiwyg_field_widget_paragraphs_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+//  /** @var \Drupal\field\Entity\FieldConfig $field_definition */
+//  $field_definition                      = $context['items']->getFieldDefinition();
+//  $paragraph_entity_reference_field_name = $field_definition->getName();
+//  $widget_state                          = \Drupal\Core\Field\WidgetBase::getWidgetState($element['#field_parents'], $paragraph_entity_reference_field_name, $form_state);
+//  $paragraph_instance                    = $widget_state['paragraphs'][$element['#delta']]['entity'];
+//  $paragraph_type = $paragraph_instance->bundle();
+//
+//  if ($paragraph_type == 'rw_wysiwyg') {
+//    // AE: This could work for form_alters, but does not display anything when
+//    //     using kint or var_dump, so working a little blind. Will improve this
+//    //     later
+//    // drupal_set_message('Adding a WYSIWYG row', 'warning');
+//    // kint($element['subform']);
+//  }
+//}
+
+//function rw_wysiwyg_form_paragraphs_subform_alter(array &$subform, FormStateInterface &$form_state, $delta) {
+//  $paragraph = $form_state->get('paragraph');
+//  $paragraph_type = $paragraph->getType();
+//
+//  if ($paragraph_type == 'rw_wysiwyg') {
+//    $subform['field_wysiwyg_enable']['#access'] = FALSE;
+//  }
+  
+  // kint($subform);
+//}

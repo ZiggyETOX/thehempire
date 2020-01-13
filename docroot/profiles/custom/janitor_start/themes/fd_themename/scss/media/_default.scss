@@ -1,0 +1,18 @@
+// DEFAULT
+.media--view-mode-default {
+
+	// file
+	&.media--type-file { margin-bottom: 0.5rem;
+		a { color: $secondary-color; padding-left: 20px; position: relative; display: inline-block; font-size: 0.875rem; line-height: 1.4;
+			&:before { font-family: 'FontAwesome'; display: block; position: absolute; top: -2px; left: 0; font-size: 1rem; }
+			&:hover { text-decoration: underline; }
+
+			// pdf
+			&.file-type-pdf {
+				&:before { content: '\f1c1'; }
+			}
+
+		}
+	}
+
+}

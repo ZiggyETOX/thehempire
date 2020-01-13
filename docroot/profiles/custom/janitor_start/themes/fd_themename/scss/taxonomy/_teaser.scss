@@ -1,0 +1,91 @@
+// TEASER
+.taxonomy-term--view-mode-teaser { background: $light-gray; margin-bottom: 0.5rem;
+	.teaser-image { @include xy-cell(12, false, 0, margin, none, small, false);
+		img { width: 100%; max-width: none; }
+	}
+	.teaser-content { padding: 1rem; @include xy-cell(12, false, 0, margin, none, small, false);
+		h3 { font-size: 1.25rem; font-weight: 500; }
+		.content {
+			.field--name-description {
+				p { margin-bottom: 0; }
+			}
+			.field--name-field-link-readmore,
+			.expander-button {
+				a { @include button(false, $primary-color, transparentize($primary-color, 0.2), $white, solid);
+					margin-bottom: 0; margin-top: 1rem; text-transform: uppercase;
+				}
+			}
+		}
+	}
+	@include breakpoint(medium) { margin-bottom: 1rem; }
+	@include breakpoint(large) {
+		.teaser-image { @include xy-cell(5, false, 0, margin, none, small, false); }
+		.teaser-content { padding: 2rem; @include xy-cell(7, false, 0, margin, none, medium, false); display: flex; flex-direction: column;
+			.content { flex: 0 1 100%; display: flex; flex-direction: column;
+				.field--name-field-link-readmore,
+				.expander-button { margin-top: auto; }
+			}
+		}
+	}
+	@include breakpoint(xlarge) { margin-bottom: 2rem;
+		.teaser-image { @include xy-cell(4, false, 0, margin, none, small, false); }
+		.teaser-content { @include xy-cell(8, false, 0, margin, none, medium, false); }
+	}
+}
+
+// committee members "attachment"
+body.alias--about-our-organisation-our-committees {
+	.view-committees {
+		.view-gsf-team { background: $medium-gray; position: relative; margin-bottom: 0.5rem; display: none; padding: 1rem 1rem 0 1rem;
+			&:before { content: ''; background: transparent; position: absolute; top: -10px; left: 2rem; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid $medium-gray; }
+
+			// is visible
+			&.is-visible { display: block; }
+
+		}
+
+		.taxonomy-term--view-mode-teaser {
+			// has team members
+			&.has-team-members {
+
+				// is expanded
+				&.is-expanded { margin-bottom: 0; }
+			}
+		}
+
+		@include breakpoint(medium) {
+			.view-gsf-team { margin-bottom: 1rem; }
+		}
+
+		@include breakpoint(large) {
+			.view-gsf-team { padding: 0 1rem; }
+		}
+
+		@include breakpoint(xlarge) {
+			.view-gsf-team { margin-bottom: 2rem; }
+		}
+	}
+}
+
+// committees/our organisation landing
+body.alias--about-our-organisation-our-committees,
+body.alias--about-our-organisation {
+	.view-committees,
+	.view-gsf-organisation-taxonomy {
+		.views-row:nth-child(even) {
+			.taxonomy-term--view-mode-teaser {
+				@include breakpoint(large) {
+					.teaser-image { order: 2; }
+					.teaser-content { order: 1; }
+				}
+			}
+		}
+	}
+}
+
+// our board landing
+body.alias--about-our-organisation-our-board {
+	.view-gsf-team {
+		.views-view-grid { border-bottom: 2px solid $light-gray; margin-bottom: 1rem; }
+	}
+}

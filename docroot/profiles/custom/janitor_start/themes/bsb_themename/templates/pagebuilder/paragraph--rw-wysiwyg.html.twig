@@ -1,0 +1,105 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a Mosaic paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * Additional available variables:
+ * - has_pullquote: TRUE if pull-quote is enabled for this row
+ * - pullquote: The string that needs to render as a pullquote
+ * - has_image: TRUE if an image entiity is being rendered
+ * - align: The selected alignment chosen. Either 'first', 'last' or 'auto'
+ *   (Default)
+ * - align_calculated: Either 'first', 'last' based on the delta of the
+ *   paragraph.
+ *
+ * @see template_preprocess_paragraph()
+ * @see rw_components_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    has_image ? 'row',
+    'paragraph',
+    'rw-paragraph--wysiwyg',
+    has_image ? 'rw-paragraph--wysiwyg--has-image',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{# Damn.. no switch/case available in drupal's twig #}
+{% if align == 'first' %}
+  {% set align_string = 'left' %}
+  {% set pushpull_class_img = 'order-first' %}
+  {% set pushpull_class_content = 'order-last' %}
+{% elseif align == 'last' %}
+  {% set align_string = 'right' %}
+  {% set pushpull_class_img = 'col-md-push-6 col-lg-push-8 order-last' %}
+  {% set pushpull_class_content = 'col-md-pull-6 col-lg-pull-4 order-first' %}
+{% else %}
+  {% set align_string = 'random (' ~ align_calculated ~ ')' %}
+{% endif %}
+{% if is_admin %}
+  <div class="rw-paragraph-admin clearfix">
+    <p class="rw-paragraph-admin--type">WYSIWYG</p>
+    <p class="rw-paragraph-admin--status">
+      {% if has_image %}with <strong>image</strong> {% endif %}
+      {% if has_pullquote %}with <strong>pullquote</strong> {% endif %}
+      {% if has_pullquote or has_image %}aligned <em>{{ align_string }}</em>{% endif %}
+    </p>
+  </div><!-- .rw-paragraph-admin -->
+{% endif %}
+
+{% if content.field_subtitle  %}<h2 class="rw-paragraph--title">{{ paragraph.field_subtitle.value }}</h2>{% endif %}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if has_image %}
+    <div class="col-sm-12 col-md-6 col-lg-4 {{ pushpull_class_img }}">
+      {{ content.field_image_ref }}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 {{ pushpull_class_content }}">
+    {% endif %}
+      {% if has_pullquote %}
+      <blockquote class="rw-paragraph--wysiwyg--quote rw-paragraph--wysiwyg--quote--{{ align_calculated }}">
+        {{ pullquote }}
+      </blockquote>
+      {% endif %}
+      {{ content|without('field_subtitle', 'field_image_ref') }}
+
+    {% if has_image %}
+    </div><!-- .content aligned with image -->
+    {% endif %}
+  </div>
+{% endblock paragraph %}

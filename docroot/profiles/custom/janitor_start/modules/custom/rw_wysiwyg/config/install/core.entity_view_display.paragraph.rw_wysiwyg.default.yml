@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rw_wysiwyg.field_align
+    - field.field.paragraph.rw_wysiwyg.field_image_ref
+    - field.field.paragraph.rw_wysiwyg.field_subtitle
+    - field.field.paragraph.rw_wysiwyg.field_wysiwyg
+    - field.field.paragraph.rw_wysiwyg.field_wysiwyg_enable
+    - field.field.paragraph.rw_wysiwyg.field_wysiwyg_quote
+    - paragraphs.paragraphs_type.rw_wysiwyg
+  module:
+    - text
+id: paragraph.rw_wysiwyg.default
+targetEntityType: paragraph
+bundle: rw_wysiwyg
+mode: default
+content:
+  field_image_ref:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: landscape_md
+      link: false
+    third_party_settings: {  }
+  field_subtitle:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_wysiwyg:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_align: true
+  field_wysiwyg_enable: true
+  field_wysiwyg_quote: true

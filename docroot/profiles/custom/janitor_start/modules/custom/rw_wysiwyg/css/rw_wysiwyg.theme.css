@@ -1,0 +1,28 @@
+/**
+ * @file
+ * The default theme implementation for formatted paragraphs
+ */
+.rw-paragraph--wysiwyg--quote {
+  width: 30%;
+  height: auto;
+  margin: 0 0 1em 0;
+  margin-bottom: var(--rw-gutter, 24px);
+  font-size: 1.6rem; /* AE: This kind of thing can be replaced with SASS vars */
+  font-weight: bold;
+  float: left;
+  text-align: right;
+  margin-right: 1em;
+  margin-right: var(--rw-gutter, 24px);
+  margin-left: calc(-1 * 72px);
+  margin-left: calc(-1 * (var(--rw-gutter) * 3));
+}
+/* When a paragraph has a pull-quote AND an image, then align opposite of */
+/* image */
+.rw-paragraph--wysiwyg--has-image .rw-paragraph--wysiwyg--quote--first {
+  float: right;
+  text-align: left;
+  margin-left: 1em;
+  margin-left: var(--rw-gutter, 24px);
+  margin-right: calc(-1 * 72px);
+  margin-right: calc(-1 * (var(--rw-gutter) * 3));
+}

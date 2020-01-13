@@ -1,0 +1,124 @@
+<?php
+/**
+ * @file
+ * Theme logic for the adminijanitor custom sub-theme
+ */
+
+use Drupal\node\Entity\NodeType;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function adminijanitor_form_system_theme_settings_alter(&$form, FormStateInterface &$form_state) {
+
+  $form['adminijanitor_settings'] = array(
+    '#type'        => 'fieldset',
+    '#title'       => t('AdminiJanitor theme settings'),
+    '#collapsible' => FALSE,
+    '#collapsed'   => FALSE,
+  );
+
+  $form['adminijanitor_settings']['tabs'] = array(
+    '#type'        => 'vertical_tabs',
+    '#default_tab' => 'basic_tab',
+  );
+
+  $form['adminijanitor_settings']['basic_tab']['basic_settings'] = array(
+    '#type'        => 'details',
+    '#title'       => t('Basic settings'),
+    '#collapsible' => TRUE,
+    '#collapsed'   => TRUE,
+    '#group'       => 'tabs',
+  );
+
+  $form['adminijanitor_settings']['basic_tab']['basic_settings']['node_form_meta'] = array(
+    '#type'        => 'item',
+    '#markup'      => '<div class="theme-settings-title">'.t("Node form meta block position").'</div>',
+  );
+
+  $form['adminijanitor_settings']['basic_tab']['basic_settings']['node_form_meta'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Display block meta as vertical tabs'),
+    '#description'   => t('Use the checkbox to display the node meta block as vertical tabs and under the main node form.'),
+    '#default_value' => theme_get_setting('node_form_meta', 'adminijanitor'),
+    '#collapsible'   => TRUE,
+    '#collapsed'     => TRUE,
+  );
+
+  $options = array_map(function (NodeType $nodeType) { return $nodeType->label(); }, NodeType::loadMultiple());
+
+  $default_value = theme_get_setting('node_form_meta_types', 'adminijanitor');
+
+  $form['adminijanitor_settings']['basic_tab']['basic_settings']['node_form_meta_types'] = array(
+    '#type'          => 'checkboxes',
+    '#title'         => t('Select the content types'),
+    '#description'   => t('Select the content type on which display the node meta block as vertical tabs and under the main node form.'),
+    '#default_value' => $default_value ? array_filter($default_value) : [],
+    '#options'       => $options,
+    '#collapsible'   => TRUE,
+    '#collapsed'     => TRUE,
+    '#states'        => [
+      'visible'      => [
+        ':input[name="node_form_meta"]' => ['checked' => TRUE],
+      ],
+    ]
+  );
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function adminijanitor_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Set advanced settings in node form as verticals tabs.
+  if (theme_get_setting('node_form_meta', 'adminijanitor')) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node          = $form_state->getFormObject()->getEntity();
+    $types_enabled = theme_get_setting('node_form_meta_types', 'adminijanitor') ? array_filter(theme_get_setting('node_form_meta_types', 'adminijanitor')): [];
+
+    if (in_array($node->bundle(), $types_enabled)) {
+      $form['advanced']['#type']      = 'vertical_tabs';
+      $form['meta']['#type']          = 'details';
+      $form['meta']['#title']         = t('Informations');
+      $form['#attached']['library'][] = 'adminijanitor/additional-styling';
+    }
+
+    // $form['moderation_state']['#parents'][] = 'group_page_moderation';
+    // kint($form);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() (page)
+ */
+function adminijanitor_preprocess_page(&$variables) {
+  $page = $variables['page'];
+  
+  // Add a library when showing the admin dashboard menu
+  // AE: I couldn't manage to add this in a more appropriate hook for some
+  //     reason, so for now adding it here
+  if (isset($page['sidebar_first']) && !empty($page['sidebar_first'])) {
+    $sidebar_first = $page['sidebar_first'];
+    if (in_array('admindashboard', $sidebar_first)) {
+      // FontAwesome from the JSE main theme
+      // $variables['#attached']['library'][] = 'jse2018/fontawesome';
+      // AE: Adding fontawesome globally instead
+      $variables['#attached']['library'][] = 'adminijanitor/admin.dashboard';
+    }
+  }
+  // kint($variables);
+}
+
+/**
+ * Implements hook_views_pre_render()
+ *
+ * Add styles to tidy up the media browsers
+ */
+function adminijanitor_views_pre_render(ViewExecutable $view) {
+  // The media browser view
+  if ($view->id() == 'rw_images' || $view->id() == 'rw_videos' || $view->id() == 'rw_video_embeds') {
+    $view->element['#attached']['library'][] = 'adminijanitor/media-browser';
+  }
+}

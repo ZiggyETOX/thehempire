@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.limited
+    - entity_browser.browser.rw_image_browser
+    - field.field.paragraph.rw_image_row.field_horizontal
+    - field.field.paragraph.rw_image_row.field_image_ref
+    - field.field.paragraph.rw_image_row.field_subtitle
+    - field.field.paragraph.rw_image_row.field_vertical
+    - paragraphs.paragraphs_type.rw_image_row
+  module:
+    - entity_browser
+_core:
+  default_config_hash: PRaj5AnOTWX-98SGQzvm8eqfyIRtCpS-hmcnxcN3y54
+id: paragraph.rw_image_row.limited
+targetEntityType: paragraph
+bundle: rw_image_row
+mode: limited
+content:
+  field_image_ref:
+    weight: 1
+    settings:
+      entity_browser: rw_image_browser
+      field_widget_display: rendered_entity
+      field_widget_remove: true
+      field_widget_replace: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: entity_browser_single_
+      field_widget_edit: false
+      open: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_subtitle:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_horizontal: true
+  field_vertical: true
+  moderation_state: true
+  status: true
+  uid: true

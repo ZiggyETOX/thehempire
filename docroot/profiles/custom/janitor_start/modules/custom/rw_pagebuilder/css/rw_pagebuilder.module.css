@@ -1,0 +1,102 @@
+:root {
+  --rw-background-color: #fff;
+  --rw-text-color: #444;
+  --rw-primary-color: #838fa9;
+  --rw-primary-color--dark: #76829a;
+  --rw-secondary-color: #b9c8cd;
+  --rw-secondary-color--dark: #a7bec4;
+  --rw-tertiary-color: #00e5de;
+  --rw-tertiary-color--dark: #4fdbd8;
+  --rw-white-color: #fff;
+  --rw-basewhites--misc: #e6e6e6;
+  --rw-basewhites--header: #f0f0f0;
+  --rw-basewhites--body: #f7f7f7;
+  --rw-black-color: #000;
+  --rw-admin-color: #a9a9a9;
+  --rw-admin-color--warning: #ffffcc;
+  --rw-admin-color--warning-text: #9f6000;
+  --rw-admin-color--error: red;
+  --rw-gutter: 30px;           /* The standard gap between things */
+  --rw-pull-size: 72px;        /* The standard amount to push/pull elements */
+  --rw-pull-size-vertical: var(--rw-pull-size, 72px);
+  --rw-pull-size-horizontal: var(--rw-pull-size, 72px);
+  --rw-height--fadeout: 400px; /* The default height for fade-out/readmore boxes */
+  --rw-container-size: 1152px; /* The default container width (8 x 12 x 12px) */
+  --rw-display: block;         /* The default fallback, override with @support queries */
+  --rw-display--flex: block;
+  --rw-display--grid: block;
+}
+
+@supports (display: flex) {
+  :root {
+    --rw-display: flex;
+    --rw-display--flex: flex;
+    --rw-display--inline-flex: inline-flex;
+  }
+}
+
+@supports (display: grid) {
+  :root {
+    --rw-display: grid;
+    --rw-display--grid: grid;
+  }
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+  }
+}
+
+@media only screen
+and (min-width : 321px) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+  }
+}
+
+@media only screen
+and (max-width : 320px) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+    --rw-gutter: 12px;
+  }}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+  }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+  }}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+  :root {
+    --rw-pull-size-horizontal: 0;
+  }}
+
+@media only screen
+and (min-width : 1024px) {
+
+}
+
+@media only screen
+and (min-width : 1224px) {
+}
+
+.field--name-body, .rw-paragraph--title {
+  /* margin-bottom: var(--rw-gutter); */
+}

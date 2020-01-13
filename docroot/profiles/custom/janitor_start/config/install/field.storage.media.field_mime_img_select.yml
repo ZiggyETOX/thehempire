@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - options
+id: media.field_mime_img_select
+field_name: field_mime_img_select
+entity_type: media
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image/jpeg
+      label: 'Jpeg image (.jpg/.jpeg)'
+    -
+      value: image/png
+      label: 'Portable Network Graphics (.png)'
+    -
+      value: image/gif
+      label: 'Graphics Interchange Format (.gif)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

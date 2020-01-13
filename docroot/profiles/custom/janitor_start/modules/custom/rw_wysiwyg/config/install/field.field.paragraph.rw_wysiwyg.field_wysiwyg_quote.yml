@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wysiwyg_quote
+    - paragraphs.paragraphs_type.rw_wysiwyg
+id: paragraph.rw_wysiwyg.field_wysiwyg_quote
+field_name: field_wysiwyg_quote
+entity_type: paragraph
+bundle: rw_wysiwyg
+label: Quote
+description: 'The text to display as pull-quote'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_med
+label: 'Square medium (1:1) - Tablets and (landscape) mobiles'
+effects:
+  1d9f45ee-4217-4599-95fd-ac6a1524d3a1:
+    uuid: 1d9f45ee-4217-4599-95fd-ac6a1524d3a1
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 640
+      height: 640
+      crop_type: focal_point

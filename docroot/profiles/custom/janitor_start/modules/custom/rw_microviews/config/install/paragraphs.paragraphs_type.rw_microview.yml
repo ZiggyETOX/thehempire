@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rw_microview
+label: 'Micro view (Content query)'
+icon_uuid: null
+description: 'Sample recent or highlighted content by type into the page.'
+behavior_plugins: {  }

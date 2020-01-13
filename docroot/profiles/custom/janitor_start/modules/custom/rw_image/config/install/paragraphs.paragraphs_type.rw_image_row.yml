@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rw_image_row
+label: 'Image with pull options'
+icon_uuid: null
+description: 'Add captioned images with a number functions added to them, e.g. Wide, Full, Pull down, Pull up, etc.'
+behavior_plugins: {  }

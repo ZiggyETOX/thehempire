@@ -1,0 +1,5 @@
+name: 'Janitor'
+type: module
+description: 'Provides standard front-end overrides and functionality commonly used on JanitorStart based websites, independent of front-end framework choices'
+core: 8.x
+package: 'Rogerwilco'

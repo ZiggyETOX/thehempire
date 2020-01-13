@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_microview_content_types
+    - paragraphs.paragraphs_type.rw_microview
+  module:
+    - options
+id: paragraph.rw_microview.field_microview_content_types
+field_name: field_microview_content_types
+entity_type: paragraph
+bundle: rw_microview
+label: 'Show content of type(s)'
+description: 'Select at least one content type to display.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,62 @@
+// SLIDE
+.node--view-mode-slide { position: relative; height: 0; padding: 50% 0 !important; overflow: hidden;
+
+	.field--name-field-image-ref { position: absolute; z-index: 0; top: 50%; left: 0; width: 100%;
+		img { width: 100%; max-width: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: width 0.2s ease-in-out; }
+	}
+	.slide-content { position: absolute; top: 0; left: 0; z-index: 1; display: flex; background: linear-gradient(transparentize($black, 0.9), transparentize($black, 0.2)); height: 100%; width: 100%; //transition: background 0.2s ease-in-out;
+
+		a { display: flex; flex-direction: column; flex: 0 0 100%; position: relative;
+			@include xy-gutters($grid-margin-gutters, padding, top right bottom left, false);
+			footer { color: $white; position: relative; font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+				.node__submitted { width: calc(100% - 48px); }
+				&:after { font-family: 'FontAwesome'; font-size: 2rem; font-weight: normal; line-height: normal; position: absolute; right: 0; top: 0; height: auto; display: block; text-align: center; }
+			}
+			h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0; margin-top: auto; color: $white;
+				&:after { content: ''; width: 60px; height: 2px; display: block; background: $primary-color; margin-top: 0.5rem; margin-bottom: 0.5rem; transition: width 0.2s ease-in-out; }
+			}
+			.node__content { color: $white;
+				.field--name-body {
+					p { margin-bottom: 0; }
+				}
+			}
+		}
+	}
+
+	// hover
+	&:hover {
+		.field--name-field-image-ref {
+			img { width: 120%; }
+		}
+		.slide-content {
+			a {
+				h3 {
+					&:after { width: 200px; }
+				}
+			}
+		}
+	}
+
+	// article
+	&.node--type-article {
+		.slide-content footer:after { content: '\f1ea'; }
+	}
+
+	// event
+	&.node--type-event {
+		.slide-content {
+			footer {
+				.event-location { width: calc(100% - 48px);
+					& > div { display: inline; }
+				}
+				&:after { content: '\f073'; }
+			}
+		}
+	}
+
+	// note
+	&.node--type-note {
+		.slide-content footer:after { content: '\f0c6'; }
+	}
+
+}

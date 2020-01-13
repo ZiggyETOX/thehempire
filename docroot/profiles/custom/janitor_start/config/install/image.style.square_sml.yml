@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_sml
+label: 'Square small (1:1) - (portrait) Mobiles'
+effects:
+  3e6c3c04-2ec6-4dfa-b8cc-56ac5cf6707e:
+    uuid: 3e6c3c04-2ec6-4dfa-b8cc-56ac5cf6707e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 320
+      height: 320
+      crop_type: focal_point

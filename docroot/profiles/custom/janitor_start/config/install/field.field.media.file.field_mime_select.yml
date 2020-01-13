@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mime_select
+    - media.type.file
+  module:
+    - options
+id: media.file.field_mime_select
+field_name: field_mime_select
+entity_type: media
+bundle: file
+label: 'Document type'
+description: 'Select the relevant MIME type of the file'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,12 @@
+global:
+  version: 1.0
+  js:
+    js/app.js: {}
+  css:
+    base:
+      'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css': { type: external }
+    theme:
+      css/app.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: portrait_md
+label: 'Portrait medium (4:5) - Medium devices'
+effects:
+  19a03957-b619-4f37-827e-b43ba6dbefe9:
+    uuid: 19a03957-b619-4f37-827e-b43ba6dbefe9
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 640
+      crop_type: focal_point

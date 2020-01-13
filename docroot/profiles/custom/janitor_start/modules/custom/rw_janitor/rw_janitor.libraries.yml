@@ -1,0 +1,5 @@
+cta_readmore_link:
+  version: 1.x
+  css:
+    theme:
+      css/rw_janitor.cta_readmore.css: {}

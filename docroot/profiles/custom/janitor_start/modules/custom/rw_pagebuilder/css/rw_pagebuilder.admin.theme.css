@@ -1,0 +1,67 @@
+/**
+ * @file
+ * Provides the admin styles for node messages and statuses
+ */
+
+.rw-node-admin,
+.rw-paragraph-admin {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  width: 100%;
+  border-top: 1px solid var(--rw-admin-color, #a9a9a9);
+  margin: var(--rw-gutter, 12px) 0;
+}
+.rw-node-admin.rw-node-admin--warning,
+.rw-paragraph-admin.rw-paragraph-admin--warning {
+  border-top: 1px solid var(--rw-admin-color--warning-text, #9f6000);
+  color: var(--rw-admin-color--warning-text, #9F6000);
+  --rw-admin-color: var(--rw-admin-color--warning);
+}
+.rw-node-admin--warning .rw-node-admin--type,
+.rw-paragraph-admin--warning .rw-paragraph-admin--type {
+  color: var(--rw-admin-color--warning-text, #9f6000);
+}
+.rw-node-admin--type,
+.rw-paragraph-admin--type {
+  display: inline-block;
+  float: right;
+  width: auto;
+  background: var(--rw-admin-color, #a9a9a9);
+  color: var(--rw-background-color, #fff);
+  padding: 0 calc(var(--rw-gutter) / 2);
+  line-height: var(--rw-gutter);
+  margin: 0;
+}
+.rw-node-admin--status,
+.rw-paragraph-admin--status {
+  display: inline-block;
+  float: right;
+  width: auto;
+  background: var(--rw-background-color);
+  color: var(--rw-admin-color, #a9a9a9);
+  padding: 0 calc(var(--rw-gutter) / 2);
+  line-height: var(--rw-gutter);
+  margin: 0;
+  right: 0;
+}
+.rw-node-admin--warning .rw-node-admin--status,
+.rw-paragraph-admin--warning .rw-paragraph-admin--status {
+  color: var(--rw-admin-color--warning-text, #9f6000);
+}
+
+/* Content tagging warning messages */
+.rw-node-admin-messages {
+  background: #fff9;
+  display: block;
+  margin: calc(var(--rw-gutter, 12px) / 2) 0;
+  padding: calc(var(--rw-gutter, 12px) / 2);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.6rem;
+  width: 100%;
+  border: 1px solid var(--rw-admin-color--warning-text, #9f6000);
+  color: var(--rw-admin-color--warning-text, #9f6000);
+  box-sizing: border-box;
+}
+.rw-node-admin-messages p {
+  margin-bottom: 0;
+}

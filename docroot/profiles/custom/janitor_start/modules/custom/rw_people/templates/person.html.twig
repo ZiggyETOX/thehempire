@@ -1,0 +1,31 @@
+{#
+/**
+ * @file person.html.twig
+ * Default theme implementation to present Person data.
+ *
+ * This template is used when viewing Person pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_person()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+  'person',
+  'person--' ~ person.bundle|clean_class,
+  not organisation_entity.isPublished() ? 'organisation_entity--unpublished',
+  view_mode ? 'person--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</article>

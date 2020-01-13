@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_horizontal
+    - paragraphs.paragraphs_type.rw_image_row
+  module:
+    - options
+_core:
+  default_config_hash: GO90E0nZeWZKUhbvHnsmpxSi136UpTTP7dZzajLiMbw
+id: paragraph.rw_image_row.field_horizontal
+field_name: field_horizontal
+entity_type: paragraph
+bundle: rw_image_row
+label: 'Horizontal option'
+description: 'Select the way the image will behave on the left and right; Select <strong>Wide</strong> to break out of the content width margins, select <strong>Full</strong> to occupy the entire screen width. Leave this field blank for default behaviour.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Bootstrap SASS Subtheme.
+
+bsb_legalwise2019.settings:
+  type: theme_settings
+  label: 'Bootstrap SASS Subtheme settings'

@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Contains rw_janitor.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\NodeType;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function rw_janitor_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rw_janitor module.
+    case 'help.page.rw_janitor':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides standard front-end overrides and functionality commonly used on JanitorStart based websites, independent of front-end framework choices. This is also a great place to store base field definitions to use for installing new sites with commonly used fields and field-types.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_extra_field_info()
+ *
+ * Provide a standard readmore link/button pseudo-field to node types
+ *
+ * @TODO: Extend to other common entity types
+ *
+ * @return array $extra
+ *   Extra field definitions
+ */
+function rw_janitor_entity_extra_field_info() {
+  $extra = [];
+  
+  foreach (NodeType::loadMultiple() as $bundle) {
+    // CTA/Readmore link - For slides and cards than like a unique button
+    $extra['node'][$bundle->id()]['display']['cta_readmore_link'] = [
+      'label'       => t('CTA/Read more button link'),
+      'description' => t('For slides/cards/etc. creates button markup with primary button classes'),
+      'weight'      => 10,
+      'visible'     => FALSE, // AE: Otherwise it gets automatically added to all content types
+    ];
+  }
+  
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view(). (node)
+ *
+ * Provide render arrays for any custom pseudo-fields that need to display
+ *
+ * @param array $build
+ * @param \Drupal\Core\Entity\EntityInterface $node
+ * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
+ * @param $view_mode
+ */
+function rw_janitor_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  // Check if the component(s) needs to be displayed
+  // CTA/Read more link
+  if ($display->getComponent('cta_readmore_link')) {
+    $button_text = ($node->hasField('field_button_text') && !$node->get('field_button_text')->isEmpty()) ? $node->get('field_button_text')->value : t('Read more');
+    
+    // @TODO: Generete these class names based on the chosen base theme (BS/FD)
+    $options = [
+      'absolute'   => TRUE,
+      'attributes' => [
+        'class'    => ['button', 'button--primary', 'button--cta-readmore', 'button--cta-readmore--' . $view_mode, 'btn', 'btn-primary', 'btn--primary-' . $view_mode],
+        'title'    => t('Read more about @title', ['@title' => $node->label()]),
+      ],
+    ];
+    
+    $node_canonical_url = Url::fromRoute('entity.node.canonical', ['node' => $node->id()], $options);
+
+    $build['cta_readmore_link'] = [
+      '#type'      => 'markup',
+      '#markup'    => Link::fromTextAndUrl($button_text, $node_canonical_url)->toString(),
+    ];
+    
+    $build['cta_readmore_link']['#attached']['library'][]  = 'rw_janitor/cta_readmore_link';
+  } // endif cta_readmore_link
+  
+  
+}
+
+/**
+ * Implements hook_theme().
+ */
+function rw_janitor_theme() {
+  return [
+    'cta_readmore_link' => [
+      'render element' => 'children',
+    ],
+  ];
+}

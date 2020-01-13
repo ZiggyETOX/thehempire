@@ -1,0 +1,25 @@
+// HEADLINE
+.node--view-mode-headline { margin-bottom: 0.5rem;
+
+	footer.node__meta { font-size: 0.75rem; font-weight: 300; }
+
+	h5 { font-size: 0.875rem; font-weight: 400; margin-bottom: 0;
+		a { color: $secondary-color;
+			&:hover { text-decoration: underline; }
+		}
+	}
+
+	// team
+	&.node--type-team {
+		margin-bottom: 0;
+		h5 { font-size: 1.275rem; font-weight: 500; }
+	}
+
+	// page
+	&.node--type-page {
+		h5 { font-size: 1.275rem; font-weight: 500;
+			a { color: $primary-color; }
+		}
+	}
+
+}

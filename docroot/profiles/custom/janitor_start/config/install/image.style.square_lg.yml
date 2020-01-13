@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_lg
+label: 'Square large (1:1) - Desktops, TVs, etc.'
+effects:
+  0a32d63e-acff-4e73-8cb2-2d1fe1fb90be:
+    uuid: 0a32d63e-acff-4e73-8cb2-2d1fe1fb90be
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 1024
+      crop_type: focal_point

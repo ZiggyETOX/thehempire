@@ -1,0 +1,54 @@
+/**
+ * @file
+ * Default CSS for an accordion paragraph + accordion item paragraph
+ */
+
+/* Accordion title */
+.rw-paragraph--accordion--item-title {
+  position: relative;
+  /*padding: 15px 40px 15px 15px;*/
+  padding: var(--rw-gutter, 12px);
+  /*background: #f90049;*/
+  background-color: var(--rw-primary-color);
+  color: var(--rw-background-color, #fff);
+  border: none;
+  margin: 0 0 1px 0;
+}
+.rw-paragraph--accordion--item-title:after {
+  content: '\2212';
+  font-family: 'Glyphicons Halflings';
+  position: absolute;
+  right: 12px;
+  right: var(--rw-gutter, 12px);
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+.rw-paragraph--accordion--item-title.collapsed {
+  /*background: #171717;*/
+  background-color: var(--rw-primary-color);
+}
+.rw-paragraph--accordion--item-title.collapsed:after {
+  content: '\002b';
+}
+
+/* Accordion body */
+.rw-paragraph--accordion--item-body {
+  border: none;
+}
+.field--name-field-accordion-item-body {
+  padding: var(--rw-gutter, 12px);
+  margin: 0;
+  position: relative;
+}
+.field--name-field-accordion-item-body:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  left: 0;
+  display: block;
+  height: 6px;
+  width: 100%;
+}

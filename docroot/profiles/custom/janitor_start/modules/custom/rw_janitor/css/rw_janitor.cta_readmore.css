@@ -1,0 +1,18 @@
+/**
+ * @file
+ * Default styles for the pseudofield cta/readmore link
+ */
+
+/** General **/
+.button--cta-readmore {
+  display: inline-block;
+  margin: calc(var(--rw-gutter, 32px) / 2) 0;
+}
+
+/** Cards **/
+/*  Modifiers only on view-mode */
+.button--cta-readmore--card {
+  display: block;
+  text-align: center;
+  margin: calc(var(--rw-gutter, 32px) / 2) auto;
+}

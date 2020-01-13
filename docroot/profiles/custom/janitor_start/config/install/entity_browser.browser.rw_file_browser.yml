@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.rw_files
+  module:
+    - entity_browser_entity_form
+    - views
+name: rw_file_browser
+label: 'File browser'
+display: modal
+display_configuration:
+  width: '1200'
+  height: '800'
+  link_text: 'Select files'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  77ba45ff-115e-4170-9287-657b07dc5e1a:
+    settings:
+      entity_type: media
+      bundle: file
+      form_mode: default
+      submit_text: 'Save file'
+    uuid: 77ba45ff-115e-4170-9287-657b07dc5e1a
+    weight: -9
+    label: 'Upload new file'
+    id: entity_form
+  8f126fd6-6898-4da2-bab6-96595dcce4c7:
+    settings:
+      view: rw_files
+      view_display: entity_browser_1
+      submit_text: 'Select entities'
+      auto_select: false
+    uuid: 8f126fd6-6898-4da2-bab6-96595dcce4c7
+    weight: -10
+    label: 'Select file(s)'
+    id: view
